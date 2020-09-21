@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daily on Hello Alili</title>
+    <link>https://alili.tech/tags/daily/</link>
+    <description>Recent content in Daily on Hello Alili</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://alili.tech/tags/daily/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数学篇 - 动态规划,编辑距离的计算(笔记)</title>
+      <link>https://alili.tech/archive/nfo3tlig7y/</link>
+      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/nfo3tlig7y/</guid>
+      <description>动态规划 （Dynamic Programming） 很多人也简称DP,动态规划需要通过子问题的最优解，推导出最终问题的最优解，因此这种方法特别注重子问题之间的转移关系。我们通常把这些子问题之间的转移称为状态转移，并把用于刻画这些状态转移的表达式称为状态转移方程。
+编辑距离 (莱文斯坦距离,又称Levenshtein距离) 俄罗斯科学家弗拉基米尔·莱文斯坦（毕业于莫斯科国立大学数学和力学系）在1965年提出，他因对纠错码理论和信息理论的贡献，于2006年获得IEEE Richard W. Hamming奖章。
+ 定义：莱文斯坦距离也称编辑距离，指的是将文本 A 编辑成文本 B 需要的最少变动次数（每次只能增加、删除或修改一个字）。
+ 用途：可以用来计算字符串的相似度，文本相似度, 拼写纠错和抄袭侦测等等
+ 优点：准确率很高，编辑距离算出来很小，文本相似度肯定很高。
+ 缺点：召回率不高，由于编辑距离与文本的顺序有关。在文字相同，文字顺序变化很大的情况下，相似度会变得很低。比如“正大光明”和“光明正大”其实是一个意思。但编辑距离是4，完全不匹配
+  计算解析： 首先定义的单字符编辑操作有且仅有三种：
+插入（Insertion）
+删除（Deletion）
+替换（Substitution）
+搜索推荐关键词的应用 计算 mouuse 与 mouse的编辑距离
+表格推导  这里面求最小值的 min 函数里有三个参数，分别对应三种情况的编辑距离，分别是：替换、插入和删除字符。
+ 代码实现 /** * @Description: 使用状态转移方程，计算两个字符串之间的编辑距离 * @param a-第一个字符串，b-第二个字符串 * @return let-两者之间的编辑距离 */ function getStrDistance( a, b) { if (a == null || b == null) return -1; // 初始用于记录化状态转移的二维表 let d = [] for (let index = 0; index &amp;lt;= a.</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 组合,解决赛程规划与自然语言处理(笔记)</title>
+      <link>https://alili.tech/archive/yraotmb3ot/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/yraotmb3ot/</guid>
+      <description>组合 组合（combination）是一个数学名词。一般地，从n个不同的元素中，任取m（m≤n）个元素为一组，叫作从n个不同元素中取出m个元素的一个组合。我们把有关求组合的个数的问题叫作组合问题。
+对于所有 m 取值的组合之全集合，我们可以叫作全组合（All Combination）。例如对于集合{1, 2, 3}而言，全组合就是{空集, {1}, {2}, {3}, {1, 2}, {1,3} {2, 3}, {1, 2, 3}}。
+如何安排世界杯赛程 想让全部的 32 支球队都和其他球队进行一次主客场的比赛.
+自己不可能和自己比赛，不可重复的排列中，主场球队有 32 种选择，而客场球队有 31 种选择。那么一共要进行多少场比赛呢？很简单，就是 32x31=992 场！
+在实际情况中,赛程设计并没有这样做.
+这就是为什么要将所有 32 支队伍分成 8 个小组先进行小组赛的原因。一旦分成小组，每个小组的赛事就是 (4x3)/2=6 场。所有小组赛就是 6x8=48 场。
+加上在 16 强阶段开始采取淘汰制，两两淘汰，所以需要 8+4+2+2=16 场淘汰赛（最后一次加 2 是因为还有 3、4 名的决赛），那么整个世界杯决赛阶段就是 48+16=64 场比赛。
+这两两配对比赛的场次，我是如何计算出来的？让我引出今天的概念，组合（Combination）。
+让计算机来组合队伍 /* * @Description: 使用函数的递归（嵌套）调用，找出所有可能的队伍组合 * @param teams-目前还剩多少队伍没有参与组合，result-保存当前已经组合的队伍 * @return void */ let teams = [&amp;quot;t1&amp;quot;, &amp;quot;t2&amp;quot;, &amp;quot;t3&amp;quot;]; combine(teams,[],2) function combine(teams,result,m) { // 挑选完了m个元素，输出结果 if (result.</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 排列,解决田忌赛马与密码爆破问题(笔记)</title>
+      <link>https://alili.tech/archive/9kfvaensryf/</link>
+      <pubDate>Mon, 07 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/9kfvaensryf/</guid>
+      <description>田忌赛马的故事 田忌是齐国有名的将领，他常常和齐王赛马，可是总是败下阵来，心中非常不悦。孙膑想帮田忌一把。他把这些马分为上、中、下三等。他让田忌用自己的下等马来应战齐王的上等马，用上等马应战齐王的中等马，用中等马应战齐王的下等马。三场比赛结束后，田忌只输了第一场，赢了后面两场，最终赢得与齐王的整场比赛。
+排列概念 从 n 个不同的元素中取出 m（1≤m≤n）个不同的元素，按照一定的顺序排成一列，这个过程就叫排列（Permutation）。
+当 m=n 这种特殊情况出现的时候,这就是全排列（All Permutation）
+田忌赛马的排列图 最终排列的数量 排列总数的计算 3x2x1=6
+ 对于 n 个元素的全排列，所有可能的排列数量就是 nx(n-1)x(n-2)x…x2x1，也就是 n!
+ 对于 n 个元素里取出m (0&amp;lt;m≤n) 个元素的不重复排列数量是 nx(n-1)x(n-2)x…x(n - m + 1)，也就是 n!/(n-m)!
+  使用代码计算田忌赛马的各种情况 // 齐王的马与速度 let q_horses_time = { q1: 1, q2: 2, q3: 3 } // 田忌的马与速度 let t_horses_time = { t1: 1.5, t2: 2.5, t3: 3.5 } // 他们马的名字 let q_horses = [&amp;quot;q1&amp;quot;, &amp;quot;q2&amp;quot;, &amp;quot;q3&amp;quot;] let t_horses = [&amp;quot;t1&amp;quot;, &amp;quot;t2&amp;quot;, &amp;quot;t3&amp;quot;] /** * @Description: 使用函数的递归（嵌套）调用，找出所有可能的马匹出战顺序 * @param horses-目前还剩多少马没有出战，result-保存当前已经出战的马匹及顺序 * @return void */ function permutate(horses, result) { // 所有马匹都已经出战，判断哪方获胜，输出结果 if (horses.</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 递归,分而治之，从归并排序到MapReduce(笔记)</title>
+      <link>https://alili.tech/archive/zr4ve5abfzg/</link>
+      <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/zr4ve5abfzg/</guid>
+      <description>黄申老师的标题实在是太好了,找不到更好的标题来描述今天学习的内容.啊哈哈~
+归并排序中的分治思想  问题: 对一堆杂乱无序的数字，按照从小到大或者从大到小的规则进行排序
+ 有序情况 尝试合并有序数组{1, 2, 5, 8}和{3, 4, 6}的过程。 乱序情况 尝试把问题不断简化，也就是把数列不断简化，一直简化到只剩 1 个数。1 个数本身就是有序的，
+把将长度为 n 的数列，每次简化为长度为 n-1 的数列，直至长度为 1。不过，这样的处理没有并行性，要进行 n-1 次的归并操作，但是效率会很低.
+引入分而治之（Divide and Conquer）的思想 分而治之，我们通常简称为分治。它的思想就是，将一个复杂的问题，分解成两个甚至多个规模相同或类似的子问题，然后对这些子问题再进一步细分，直到最后的子问题变得很简单，很容易就能被求解出来，这样这个复杂的问题就求解出来了。
+一个数组的排序 两个数组排序后合并
+最重要的思想在于如何拆解问题 归并排序的不同阶段
+使用递归的方式来实现已上思路 // 递归拆分数组 function merge_sort(to_sort) { // 非法数据,直接返回[] if (!to_sort) return []; // 如果分解到只剩一个数，返回该数 if (to_sort.length == 1) return to_sort; // 将数组分解成左右两半 let mid = to_sort.length / 2; // js中的splice会操作原数组内容, // 前半段取出来之后,后半段直接取原数组的变量应用就好了 let left = [].</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 递归,复杂问题分解(笔记)</title>
+      <link>https://alili.tech/archive/ru7lce72gge/</link>
+      <pubDate>Sat, 05 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/ru7lce72gge/</guid>
+      <description>递归与循环 理论上所有递归能做到的循环都能实现.
+递归和循环其实都是迭代法的实现，而且在某些场合下，它们的实现是可以相互转化的。
+为什么要使用递归  既然递归的函数值返回过程和基于循环的迭代法一致，我们直接用迭代法不就好了，为什么还要用递归的数学思想和编程方法呢？
+ 如何在限定总和的情况下，求所有可能的加和方式？  假设有四种面额的钱币，1 元、2 元、5 元和 10 元，要奖励别人10元，那可以奖赏 1 张 10 元，或者 10 张 1 元，或者 5 张 1 元外加 1 张 5 元等等。最终会有多少种方案?
+ 如何把复杂的问题简单化？ // 面额 var rewards = [1, 2, 5, 10]; /** * @Description: 使用函数的递归（嵌套）调用，找出所有可能的奖赏组合 * @param totalReward-奖赏总金额，result-保存当前的解 * @return void */ function get(totalReward,result){ // 如果所有奖励全部给完 if (totalReward == 0) { // 拿到复合条件的结果,输出 console.log(result); return; } // 如果奖励的钱超过当初设想的奖励(钱给多了), // 则不是我们想要的结果 if (totalReward &amp;lt; 0) { return; } //根据不同面额触发,让他们开始递归 for (let i = 0; i &amp;lt; rewards.</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 数学归纳法,给计算机注入灵魂(笔记)</title>
+      <link>https://alili.tech/archive/fexppeuk3m/</link>
+      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/fexppeuk3m/</guid>
+      <description>什么是数学归纳法？ 在棋盘上放麦粒的规则是，第一格放一粒，第二格放两粒，以此类推，每一小格内都比前一小格多一倍的麦子，直至放满 64 个格子。你发现第 1 格到第 8 格的麦子数分别是：1、2、4、8、16、32、64、128。
+找规律 对于类似这种无穷数列的问题，我们通常可以采用数学归纳法（Mathematical Induction）来证明
+数学归纳法步骤  证明基本情况（通常是 n=1 的时候）是否成立； 假设 n=k−1 成立，再证明 n=k 也是成立的（k 为任意大于 1 的自然数）。  和使用迭代法的计算相比，数学归纳法最大的特点就在于“归纳”二字。它已经总结出了规律。只要我们能够证明这个规律是正确的，就没有必要进行逐步的推算，可以节省很多时间和资源。
+代码示例 let grid = 63; console.time(&#39;归纳法耗时&#39;) console.log(`舍罕王给了这么多粒: ${ Math.pow(2, grid) - 1 }`) console.timeEnd(&#39;归纳法耗时&#39;)   递归调用的代码和数学归纳法的逻辑是一致的,但是数学归纳法实现的运行时间几乎为 0
+ 数学归纳法需要我们能做出合理的命题假设，然后才能进行证明。</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 迭代法,让每次计算都更接近真像(笔记)</title>
+      <link>https://alili.tech/archive/35dkyj5swxr/</link>
+      <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/35dkyj5swxr/</guid>
+      <description>什么是迭代法（Iterative Method）？ 就是不断地用旧的变量值，递推计算新的变量值。
+小故事:  古印度国王舍罕酷爱下棋，他打算重赏国际象棋的发明人宰相西萨·班·达依尔。这位聪明的大臣指着象棋盘对国王说：“陛下，我不要别的赏赐，请您在这张棋盘的第一个小格内放入一粒麦子，在第二个小格内放入两粒，第三小格内放入给四粒，以此类推，每一小格内都比前一小格加一倍的麦子，直至放满 64 个格子，然后将棋盘上所有的麦粒都赏给您的仆人我吧！”国王自以为小事一桩，痛快地答应了。可是，当开始放麦粒之后，国王发现，还没放到第二十格，一袋麦子已经空了。随着，一袋又一袋的麦子被放入棋盘的格子里，国王很快看出来，即便拿来全印度的粮食，也兑现不了对达依尔的诺言。
+ 通过一个函数来计算最后麦子的数量. 用计算机语言其实特别适合 function getNumberOfWheat(grid){ numberOfWheatInGrid = 0; // 当前格子里麦粒的数量 let numberOfWheatInGrid = 1; // 第一个格子里麦粒的数量 // 先放一粒米 sum += numberOfWheatInGrid; for (let i = 2; i &amp;lt;= grid; i ++) { numberOfWheatInGrid *= 2; // 当前格子里麦粒的数量是前一格的2倍 sum += numberOfWheatInGrid; // 累计麦粒总数 } return sum; } // 计算64格的数量 console.log(getNumberOfWheat(64))  具体应用？  求数值的精确或者近似解。典型的方法包括二分法（Bisection method）和牛顿迭代法（Newton’s method）。
+ 在一定范围内查找目标值。典型的方法包括二分查找。
+ 机器学习算法中的迭代。相关的算法或者模型有很多，比如 K- 均值算法（K-means clustering）、PageRank 的马尔科夫链（Markov chain）、梯度下降法（Gradient descent）等等。迭代法之所以在机器学习中有广泛的应用，是因为很多时候机器学习的过程，就是根据已知的数据和一定的假设，求一个局部最优解。而迭代法可以帮助学习算法逐步搜索，直至发现这种解。</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 余数与哈希函数(笔记)</title>
+      <link>https://alili.tech/archive/jvh7xaof84/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/jvh7xaof84/</guid>
+      <description>余数 例1: 今天是星期三，你想知道 50 天之后是星期几，那你可以这样算，拿 50 除以 7（因为一个星期有 7 天），然后余 1，最后在今天的基础上加一天，这样你就能知道 50 天之后是星期四了
+例2: 如果你要展示 1123 条数据，每页 10 条，那该怎么计算总共的页数呢？我想你肯定是拿 1123 除以 10，最后得到商是 112，余数是 3，所以你的总页数就是 112+1=113，而最后的余数就是多出来，凑不够一页的数据。
+ 余数总是在一个固定的范围内
+ 同余定理 数学上，两个整数除以同一个整数，若得相同余数，则二整数同余
+如何理解 100 天里，所有星期一的这些天都是同余的，所有星期二的这些天就是同余的，同理，星期三、星期四等等这些天也都是同余的
+哈希 Hash 将任意长度的输入，通过哈希算法，压缩为某一固定长度的输出
+想想星期的概念: 将数据取余  ps. size指的是有限空间的数目而不是大小
+ 在这个公式中，x 表示等待被转换的数值，而 size 表示有限存储空间的数目，mod 表示取余操作。通过余数，你就能将任何数值，转换为有限范围内的一个数值，然后根据这个新的数值，来确定将数据存放在何处。
+假设有两条记录，它们的记录标号分别是 1 和 101。我们把这些模 100 之后余数都是 1 的，存放到第 1 个可用空间里。以此类推，将余数为 2 的 2、102、202 等，存放到第 2 个可用空间，将 100、200、300 等存放到第 100 个可用空间里。
+再复杂一点 我们假设随机数 MAX 是 590199，那么我们针对标号为 1 的记录进行重新计算，最后的计算结果就是 0，而针对标号 101 的记录，如果随机数 MAX 取 627901，对应的结果应该是 2。这样先前被分配到空间 1 的两条记录，在新的计算公式作用下，就会被分配到不同的可用空间中。</description>
+    </item>
+    
+    <item>
+      <title>数学篇 - 计算机的源头二进制(笔记)</title>
+      <link>https://alili.tech/archive/ja86xk20l2/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/ja86xk20l2/</guid>
+      <description>计算机起源  计算机的起源是数学中的二进制计数法  什么是二进制计数法？ 日常的十进制 阿拉伯数字由从 0 到 9 这样 10 个计数符号组成，并采取进位制法,每10进一位,2871为例
+其中 ^ 表示幂或次方运算。十进制的数位（千位、百位、十位等）全部都是 10^n 的形式。需要特别注意的是，任何非 0 数字的 0 次方均为 1。在这个新的表示式里，10 被称为十进制计数法的基数.
+二进制 我们将基数改为2,就可以理解二进制的展示了.例如110101.
+ 二进制的数位就是 2^n 的形式
+ 其他进制 我们只要基于基数的改动,就可以使用任一进制来展示我们的数字.
+JavaScript 进制转换 parseInt(num,8); //八进制转十进制 parseInt(num,16); //十六进制转十进制 parseInt(num).toString(8) //十进制转八进制 parseInt(num).toString(16) //十进制转十六进制 parseInt(num,2).toString(8) //二进制转八进制 parseInt(num,2).toString(16) //二进制转十六进制 parseInt(num,8).toString(2) //八进制转二进制 parseInt(num,8).toString(16) //八进制转十六进制 parseInt(num,16).toString(2) //十六进制转二进制 parseInt(num,16).toString(8) //十六进制转八进制  计算机为什么使用二进制？ 组成计算机系统的逻辑电路通常只有两个状态，即开关的接通与断开。
+二进制的位操作 向左移位 二进制 110101 向左移一位，就是在末尾添加一位 0，因此 110101 就变成了 1101010
+如果将 1101010 换算为十进制，就是 106，你有没有发现，106 正好是 53 的 2 倍 &amp;gt; 二进制左移一位，其实就是将数字翻倍。</description>
+    </item>
+    
+  </channel>
+</rss>

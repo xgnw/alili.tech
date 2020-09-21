@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hugo 0.51"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="HandheldFriendly" content="True"><meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="wap-font-scale" content="no"><meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34"><meta name="sogou_site_verification" content="E8uWFBcf4a"><meta name="author" content="Fan"><meta name="description" itemprop="description" content="计算机起源  计算机的起源是数学中的二进制计数法  什么是二进制计数法？ 日常的十进制 阿拉伯数字由从 0 到 9 这样 10 个计数符号组成，并采取进位制法,每10进一位,2871为例
+其中 ^ 表示幂或次方运算。十进制的数位（千位、百位、十位等）全部都是 10^n 的形式。需要特别注意的是，任何非 0 数字的 0 次方均为 1。在这个新的表示式里，10 被称为十进制计数法的基数.
+二进制 我们"><meta name="keywords" content="人工智能,计算机数学,计算机基础,计算机,前端学人工智能,每日功课"><meta property="og:locale" content="en_US"><meta property="og:title" content="数学篇 - 计算机的源头二进制(笔记)"><meta property="og:image" content="https://alili.tech/images/logo2.png"><meta property="og:description" content="计算机起源  计算机的起源是数学中的二进制计数法  什么是二进制计数法？ 日常的十进制 阿拉伯数字由从 0 到 9 这样 10 个计数符号组成，并采取进位制法,每10进一位,2871为例
+其中 ^ 表示幂或次方运算。十进制的数位（千位、百位、十位等）全部都是 10^n 的形式。需要特别注意的是，任何非 0 数字的 0 次方均为 1。在这个新的表示式里，10 被称为十进制计数法的基数.
+二进制 我们"><meta property="og:site_name" content="Hello Alili"><title>数学篇 - 计算机的源头二进制(笔记) | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title><link rel="shortcut icon" href="https://alili.tech/images/favicon.ico"><link rel="manifest" href="/manifest.json"><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"><link href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/css/justifiedGallery.min.css" rel="stylesheet"><link rel="preload" href="https://alili.tech/css/style.css" as="style"><link rel="stylesheet" href="https://alili.tech/css/style.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script>document.addEventListener("error", function (e) {
+			  var elem = e.target;
+			  if (elem.tagName.toLowerCase() == 'img') {
+				elem.style.display='none'
+			  }
+			}, true);</script></head><body><div id="header-post"><a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a> <span id="menu"><span id="nav"><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></span><br><span id="actions"><ul><li><a class="icon" href="https://alili.tech/archive/7fp151i7xnf/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li><li><a class="icon" href="https://alili.tech/archive/jvh7xaof84/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li><li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li><li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li></ul><span id="i-prev" class="info" style="display:none;">Previous post</span> <span id="i-next" class="info" style="display:none;">Next post</span> <span id="i-top" class="info" style="display:none;">Back to top</span> <span id="i-share" class="info" style="display:none;">Share post</span></span><br><div id="share" style="display: none"><ul><li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&text=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-weibo" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f"><i class="fa fa-facebook" aria-hidden="true"></i></a></li><li><a class="icon" href="https://twitter.com/share?url=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&text=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&is_video=false&description=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li><li><a class="icon" href="mailto:?subject=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29&body=Check out this article: https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f"><i class="fa fa-envelope" aria-hidden="true"></i></a></li><li><a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li><li><a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-reddit" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li><li><a class="icon" href="http://digg.com/submit?url=https%3a%2f%2falili.tech%2farchive%2fja86xk20l2%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%9a%84%e6%ba%90%e5%a4%b4%e4%ba%8c%e8%bf%9b%e5%88%b6%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-digg" aria-hidden="true"></i></a></li></ul></div><div id="toc"><nav id="TableOfContents"><ul><li><ul><li><a href="#计算机起源">计算机起源</a></li><li><a href="#什么是二进制计数法">什么是二进制计数法？</a><ul><li><a href="#日常的十进制">日常的十进制</a></li><li><a href="#二进制">二进制</a></li><li><a href="#其他进制">其他进制</a></li><li><a href="#javascript-进制转换">JavaScript 进制转换</a></li></ul></li><li><a href="#计算机为什么使用二进制">计算机为什么使用二进制？</a></li><li><a href="#二进制的位操作">二进制的位操作</a><ul><li><a href="#向左移位">向左移位</a><ul><li><a href="#数字溢出">数字溢出</a></li></ul></li><li><a href="#向右移位">向右移位</a></li><li><a href="#代码示例">代码示例</a></li><li><a href="#左移位是-那右移位为什么是-而不是-呢">左移位是 &lt;&lt;，那右移位为什么是 &gt;&gt;&gt; 而不是 &gt;&gt; 呢 ?</a></li><li><a href="#逻辑右移">逻辑右移 &gt;&gt;</a></li><li><a href="#算术右移">算术右移 &gt;&gt;</a></li></ul></li><li><a href="#位的-或">位的“或”</a></li><li><a href="#位的-与">位的“与</a></li><li><a href="#位的-异或">位的“异或”</a><ul><li><a href="#javascript-按位与-按位或-按位异或-操作">javascript 按位与、按位或、按位异或 操作</a></li></ul></li></ul></li></ul></nav></div></span></div><div class="content index width mx-auto px3 my3"><section id="wrapper" class="home"><article class="post" itemscope itemtype="http://schema.org/BlogPosting"><header><h1 class="posttitle" itemprop="name headline">数学篇 - 计算机的源头二进制(笔记)</h1><div class="meta"><div class="postdate"><time datetime="2020-09-01" itemprop="datePublished">2020-09-01</time></div><div class="article-tag"><i class="fa fa-eye"></i> <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span></span></div><div class="article-tag"><i class="fa fa-tag"></i> <a href="/tags/daily">Daily</a> <a href="/tags/%E6%95%B0%E5%AD%A6">数学</a></div><div class="article-tag-box"></div></div></header><div class="content" itemprop="articleBody"><h2 id="计算机起源">计算机起源</h2><ul><li>计算机的起源是数学中的二进制计数法</li></ul><h2 id="什么是二进制计数法">什么是二进制计数法？</h2><h3 id="日常的十进制">日常的十进制</h3><p>阿拉伯数字由从 0 到 9 这样 10 个计数符号组成，并采取进位制法,每10进一位,2871为例</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/294a1909e34794530f44814c77647d1aa7c7c6b487067889af4a1a85b3b857da.png" alt="图 7"></p><p>其中 ^ 表示幂或次方运算。十进制的数位（千位、百位、十位等）全部都是 10^n 的形式。需要特别注意的是，任何非 0 数字的 0 次方均为 1。在这个新的表示式里，10 被称为十进制计数法的<code>基数</code>.</p><h3 id="二进制">二进制</h3><p>我们将基数改为2,就可以理解二进制的展示了.例如110101.</p><blockquote><p>二进制的数位就是 2^n 的形式</p></blockquote><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/d20e54352a5b95a9caafef829f9d00c5b1e4186fa0323d446e62bd624ea6c7e0.png" alt="图 8"></p><h3 id="其他进制">其他进制</h3><p>我们只要基于基数的改动,就可以使用任一进制来展示我们的数字.</p><h3 id="javascript-进制转换">JavaScript 进制转换</h3><pre><code class="language-js">
+parseInt(num,8); //八进制转十进制
+parseInt(num,16); //十六进制转十进制 
+parseInt(num).toString(8) //十进制转八进制 
+parseInt(num).toString(16) //十进制转十六进制 
+parseInt(num,2).toString(8) //二进制转八进制 
+parseInt(num,2).toString(16) //二进制转十六进制
+parseInt(num,8).toString(2) //八进制转二进制 
+parseInt(num,8).toString(16) //八进制转十六进制 
+parseInt(num,16).toString(2) //十六进制转二进制 
+parseInt(num,16).toString(8) //十六进制转八进制
+
+</code></pre><h2 id="计算机为什么使用二进制">计算机为什么使用二进制？</h2><p>组成计算机系统的逻辑电路通常只有两个状态，即开关的接通与断开。</p><h2 id="二进制的位操作">二进制的位操作</h2><h3 id="向左移位">向左移位</h3><p>二进制 110101 向左移一位，就是在末尾添加一位 0，因此 110101 就变成了 1101010</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/0145c13e717d6c03fe7cce4710684fc603d232ee67c68acbf28adcb97607e0ff.png" alt="图 9"></p><p>如果将 1101010 换算为十进制，就是 106，你有没有发现，106 正好是 53 的 2 倍 &gt; 二进制左移一位，其实就是将数字翻倍。</p><h4 id="数字溢出">数字溢出</h4><p>所谓数字溢出，就是二进制数的位数超过了系统所指定的位数。目前主流的系统都支持至少 32 位的整型数字</p><h3 id="向右移位">向右移位</h3><p>二进制 110101 向右移一位，就是去除末尾的那一位，因此 110101 就变成了 11010</p><p>ps. 我们将 11010 换算为十进制，就是 26，正好是 53 除以 2 的整数商</p><blockquote><p>二进制右移一位，就是将数字除以 2 并求整数商的操作</p></blockquote><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/ea434cec66e0bd73ac5e47353b381784581978f8b12210180d5cbec1fb5cb32f.png" alt="图 10"></p><h3 id="代码示例">代码示例</h3><pre><code class="language-js">console.log(5 &lt;&lt; 2);  //返回值20
+
+console.log(1000 &gt;&gt;&gt; 8);  //返回值3
+</code></pre><h3 id="左移位是-那右移位为什么是-而不是-呢">左移位是 &lt;&lt;，那右移位为什么是 &gt;&gt;&gt; 而不是 &gt;&gt; 呢 ?</h3><ul><li>&gt;&gt; 也是右移操作</li><li>二进制数值中最高一位是符号位</li></ul><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/7b7b77677b4c83731390422c0b7e4511ce4d8f1914a87afd788f75f88f1c0e09.png" alt="图 13"></p><blockquote><p>如果数字是 -53 呢？那么第 32 位就不是 0</p></blockquote><p>负数:</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/02b7f109b46c860ae8355d68d2cfa0cb2ab098aae7320eab932297dd9f5b258f.png" alt="图 14"></p><h3 id="逻辑右移">逻辑右移 &gt;&gt;</h3><p>会改变符号位</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/bd7aefcf956ccf87fdcf3da3f5703dd21fb6bf9d25edadae55c77d9dc86cf506.png" alt="图 15"></p><h3 id="算术右移">算术右移 &gt;&gt;</h3><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/57271a6d6005d04713dccc75528c8e28b6ce766e0ecd8225a97f16bd8111c874.png" alt="图 16"></p><h2 id="位的-或">位的“或”</h2><p>二进制的“1”和“0”分别对应逻辑中的“真”和“假”，可以针对位进行逻辑操作</p><p>逻辑“或”的意思是，参与操作的位中只要有一个位是 1，那么最终结果就是 1，也就是“真”。如果我们将二进制 110101 和 100011 的每一位对齐，进行按位的“或”操作，就会得到 110111。</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/1ad8b63cfc853ec671c225f05104095a1f152d6e65e5e708fdc5f543b8e194f1.png" alt="图 17"></p><h2 id="位的-与">位的“与</h2><p>同理，我们也可以针对位进行逻辑“与”的操作。“与”的意思是，参与操作的位中必须全都是 1，那么最终结果才是 1（真），否则就为 0（假）。如果我们将二进制 110101 和 100011 的每一位对齐，进行按位的“与”操作，就会得到 100001。</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/a83750a83a4706902b6330abc2b6b72e625dbb55441b30836e476289bd35d4aa.png" alt="图 18"></p><h2 id="位的-异或">位的“异或”</h2><p>逻辑“异或”和“或”有所不同，它具有排异性，也就是说如果参与操作的位相同，那么最终结果就为 0（假），否则为 1（真）。所以，如果要得到 1，参与操作的两个位必须不同，这就是此处“异”的含义。我们将二进制 110101 和 100011 的每一位对齐，进行按位的“异或”操作，可以得到结果是 10110。</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/66327173c4e0588102c4953bd8023768b9c21ccf3f42848f558e4acaa7edd7eb.png" alt="图 19"></p><h3 id="javascript-按位与-按位或-按位异或-操作">javascript 按位与、按位或、按位异或 操作</h3><pre><code class="language-js">        var a=1;
+        var b=0;
+ 
+        //按位与&amp;：两个操作数都是1，结果才是1
+        a&amp;b //结果是0
+ 
+        //按位或：两个操作数只要有一个是1，结果就是1
+        a|b  //结果是1
+ 
+        //按位异或：两个数字一样，结果为0；两个数字不一样，结果就是1。
+        a^b  //结果是1
+
+        //简单的方法：数字求负，在减1
+        ~a //结果是-2
+</code></pre><h2>微信公众号</h2><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/c2a91cfb597826a4b02b755746c300e00cc7728a9f5bac20bec538e8c76a443f.png"><h2>本文链接：</h2><a href="https://alili.tech/archive/ja86xk20l2/" target="_blank">https://alili.tech/archive/ja86xk20l2/</a></div></article><script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><div class="blog-post-comments"></div><script>new Valine({
+        el: '.blog-post-comments', 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', 
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', 
+        placeholder: '说点什么? 证明你来过~', 
+        avatar:'robohash',
+        notify:true,
+        verify:true
+    });</script><h1># 最新文章</h1><ul id="more-post-list" class="archive readmore"><li><a href="/archive/nfo3tlig7y/">数学篇 - 动态规划,编辑距离的计算(笔记)<aside class="dates">2020-09-09</aside></a></li><li><a href="/archive/yraotmb3ot/">数学篇 - 组合,解决赛程规划与自然语言处理(笔记)<aside class="dates">2020-09-08</aside></a></li><li><a href="/archive/9kfvaensryf/">数学篇 - 排列,解决田忌赛马与密码爆破问题(笔记)<aside class="dates">2020-09-07</aside></a></li><li><a href="/archive/zr4ve5abfzg/">数学篇 - 递归,分而治之，从归并排序到MapReduce(笔记)<aside class="dates">2020-09-06</aside></a></li><li><a href="/archive/ru7lce72gge/">数学篇 - 递归,复杂问题分解(笔记)<aside class="dates">2020-09-05</aside></a></li><li><a href="/archive/fexppeuk3m/">数学篇 - 数学归纳法,给计算机注入灵魂(笔记)<aside class="dates">2020-09-04</aside></a></li><li><a href="/archive/35dkyj5swxr/">数学篇 - 迭代法,让每次计算都更接近真像(笔记)<aside class="dates">2020-09-03</aside></a></li><li><a href="/archive/jvh7xaof84/">数学篇 - 余数与哈希函数(笔记)<aside class="dates">2020-09-02</aside></a></li><li><a href="/archive/7fp151i7xnf/">Puppeteer在工作中是如何伪装自己的(爬虫与反爬虫)<aside class="dates">2020-08-29</aside></a></li><li><a href="/archive/wwfw2u086as/">Taro跨端开发之让Taro UI支持React Native<aside class="dates">2020-08-27</aside></a></li></ul></section></div><footer id="footer"><div class="footer-left">Copyright © 2020 Fan <a href="https://beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号</a></div><div class="footer-right"><nav><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></nav></div></footer><script src="https://alili.tech/lib/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/js/jquery.justifiedGallery.min.js"></script><script src="https://alili.tech/js/main.js"></script><script async src=""></script><script>(function(){
+  if(location.host!=='alili.tech')return;
+  var ga = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=UA-129382678-1';       
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(ga, s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129382678-1');
+})()</script><script>(function(){
+    if(location.host!=='alili.tech')return;
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+          navigator.serviceWorker
+              .register('/sw.js')
+              .then(registration => {
+                  
+              })
+              .catch(registrationError => {
+                  console.log('SW registration failed: ', registrationError);
+              });
+      });
+  }</script><script>var _mtac = {};
+  (function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500643908");
+    mta.setAttribute("cid", "500649335");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+  })();</script></body></html>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>跨端开发 on Hello Alili</title>
+    <link>https://alili.tech/tags/%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in 跨端开发 on Hello Alili</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 27 Aug 2020 22:17:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://alili.tech/tags/%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Taro跨端开发之让Taro UI支持React Native</title>
+      <link>https://alili.tech/archive/wwfw2u086as/</link>
+      <pubDate>Thu, 27 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/wwfw2u086as/</guid>
+      <description>Taro UI 不支持RN的窘境 Taro UI 文档上很早就说明会有可能支持rn了,但是快一年多了,因为taro ui团队人力的问题一直没有兼容到rn.
+业务紧迫,我们等不到那一天了.自己动手丰衣足食.
+Taro 传统组件打包在RN上的问题 一般来说,组件库打完包之后 dist/index.js文件会是这样的.
+根据运行时的环境变量区分是否要引入哪一个组件库.
+if (process.env.TARO_ENV === &#39;weapp&#39;) { module.exports = require(&#39;./weapp/ui&#39;) module.exports.default = module.exports } else if (process.env.TARO_ENV === &#39;h5&#39;) { module.exports = require(&#39;./h5/ui&#39;) module.exports.default = module.exports } else { module.exports = require(&#39;./weapp/ui&#39;) module.exports.default = module.exports }  理想模式下,只要加入一个rn的环境判断,就可以做到rn组件库的引入了.
+if (process.env.TARO_ENV === &#39;weapp&#39;) { module.exports = require(&#39;./weapp/ui&#39;) module.exports.default = module.exports } else if (process.env.TARO_ENV === &#39;h5&#39;) { module.exports = require(&#39;.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之多业务模块管理 React Native篇(终篇)</title>
+      <link>https://alili.tech/archive/2f9lla2yjb5/</link>
+      <pubDate>Tue, 25 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/2f9lla2yjb5/</guid>
+      <description>React Native 热更新方案 rn的业务越来越庞大,同时协同的团队越来越多. rn的动态化就必须提上日程了. 对于rn热更新,首当其冲的问题就是分包.
+rn的基础库很大,再加上我们依赖了很多的三方库.这些代码就必须在分包的时候单独剥离出来. 业务包让他比较纯粹的只有业务代码. 这样就可以保证业务包的体积比较小,保证热更新时候的速度.
+使用metro分包 React Native 提供的 metro 自带分包功能。metro我们本来就一直在用,只要在metro打包的时候,提供相应的打包规则. 就可以实现rn的分包了.
+示例: ios打包
+node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file rn入口文件.js --bundle-output ./xxx/ --assets-dest ./xxx/ --config /{你的绝对路径}/你的metro配置文件.js  metro 关键api介绍 我们分包需要用的选项主要是两个：
+ createModuleIdFactory：这个函数传入要打包的 module 文件的绝对路径，返回这个 module 在打包的时候生成的 id。
+ processModuleFilter：这个函数传入 module 信息，返回一个 boolean 值，false 则表示这个文件不打入当前的包。
+  主工程分包 之前我们有提到过我们有一个项目是主工程,里面没有任何的业务代码.只有一些代码运行需要的所有依赖.
+我们需要将所有的依赖全部收集起来,当业务模块打包的时候,发现本地有这个依赖就可以使用 processModuleFilter方法排除掉.
+因为我们的主工程与业务项目的依赖版本都是高度统一的. 所以我们node_modules下面的依赖包路径都是完全一致的.
+Taro跨端开发之依赖管理
+主工程的metro配置文件示例:
+function createModuleIdFactory() { return path =&amp;gt; { // 在这里我们拿到依赖的文件路径, // 我们需要在这个函数块中,将路径以收集并且将这些数据生成文件 // 部署到我们内网的服务器中 // 当业务模块需要打包的时候,是否要将代码打进包中,将以这个文件为依据 return path; }; } module.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之多业务模块管理 React Native篇(中)</title>
+      <link>https://alili.tech/archive/j4ylxksvfa8/</link>
+      <pubDate>Sun, 23 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/j4ylxksvfa8/</guid>
+      <description>实现一个简单的模块管理工具,解决npm拉取业务模块慢的问题 使用npm拉取git仓库,速度其实还是可以接受的. 主要慢的地方在于 postinstall的时候需要在npm拉取git仓库的时候,需要重新构建项目代码.还有一点就是业务模块也有依赖,npm install的时候也需要重新拉取相同的依赖.
+这两个步骤其实是可以省略的,解决的办法就是可以实现一个简单的模块管理工具来替代npm加载业务模块的处理.
+创建一个配置文件 module.exports = { &amp;quot;Module1&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;http://xxx1.git&amp;quot;, &amp;quot;moduleName&amp;quot;: [ &amp;quot;模块名称&amp;quot; ], &amp;quot;branch&amp;quot;: &amp;quot;develop&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;taro&amp;quot; }, &amp;quot;Module2&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;http://xxx2.git&amp;quot;, &amp;quot;moduleName&amp;quot;: [ &amp;quot;模块名称&amp;quot; ], &amp;quot;branch&amp;quot;: &amp;quot;develop&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;taro&amp;quot; } }  因为每一个项目都会用到这一个文件,把这个文件放到服务器上. 在业务模块初始化的时候,自动拉取解析这个文件.再使用nodejs拉取相应的git仓库.
+拉取git仓库 使用download-git-repo拉取git仓库的代码放到node_modules目录下. 这样在项目中,我就可以引用普通npm一样引入这个仓库的代码了.
+这是download-git-repo的地址与使用方法 https://www.npmjs.com/package/download-git-repo
+模拟npm生命周期 代码拉下来之后,还需要用postinstall来构建业务代码, 所以需要使用nodejs遍历以下业务模块的目录,读取目录下的每一个packages.json.
+如果有npm钩子的,就执行一下里面的script.
+大致示例代码如下:
+// 示例代码,仅供参考 const spawn = require(&#39;cross-spawn&#39;); const fse = require(&#39;fs-extra&#39;); const packageData = fse.readJsonSync(&#39;./packages.json&#39;); if (packageData.scripts.preinstall) { spawn.sync(&#39;npm&#39;,[&#39;run&#39;,&#39;preinstall&#39;]); } if (packageData.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之多业务模块管理 React Native篇(上)</title>
+      <link>https://alili.tech/archive/w650d9ok34i/</link>
+      <pubDate>Fri, 21 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/w650d9ok34i/</guid>
+      <description>原生RN项目与Taro如何共存? 我们团队一开始就有实践原生React Native的项目,很长一段时间,
+所有的业务模块都是在一个项目里面开发维护,时间久了这个项目就变成了一个巨无霸项目.
+再加上后来引进了基于Taro开发的rn项目,为了保证原生与Taro的RN共存,
+不管是原生rn项目还是taro项目的package.json文件的main对外导出的索引文件格式都是一致的.
+我们使用以下方案来维护我们的代码.
+使用npm来管理我们的业务模块 RN业务的主工程 这是我最初实践的方案,首先我们创建一个项目为RN的主工程.
+里面没有任何的业务代码,只有在根目录下有一个index.js的业务索引文件.
+它大概是这样的:
+import { AppRegistry} from &#39;react-native&#39;; import Module1 from &#39;Module1&#39;; import Module2 from &#39;Module2&#39;; import Module3 from &#39;Module3&#39;; AppRegistry.registerComponent(&#39;Module1&#39;, () =&amp;gt; Module1); AppRegistry.registerComponent(&#39;Module2&#39;, () =&amp;gt; Module2); AppRegistry.registerComponent(&#39;Module3&#39;, () =&amp;gt; Module3);  之前的一篇文章我已经提到,我们所有的模块依赖都是统一的,并且版本锁死.
+有兴趣的可以点击查看:
+Taro跨端开发之依赖管理
+所以我的主工程的依赖与业务模块的依赖是保持一致的.
+使用NPM管理业务模块 我们会把所有的业务模块当成npm来管理,因为npm有很多的生命周期钩子使用.
+在统一了npm script 命令之后,很容易统一管理他们.
+当然这些业务模块我们不会把他发布到npm服务器上,因为业务代码会频繁变动,如果每一次提交都要上传到npm服务器,自然会添加开发人员的代码管理成本(发布npm包很烦的)
+所以我们使用 npm + git 地址来拉取我们的业务模块.
+例如:
+主工程的package.json { &amp;quot;name&amp;quot;: &amp;quot;base&amp;quot;, &amp;quot;version&amp;quot;: &amp;quot;0.0.6&amp;quot;, &amp;quot;scripts&amp;quot;: { &amp;quot;build&amp;quot;:&amp;quot;构建rn的相关操作&amp;quot; }, &amp;quot;dependencies&amp;quot;: { &amp;quot;公共依赖包&amp;quot;: &amp;quot;1.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之依赖管理</title>
+      <link>https://alili.tech/archive/h8gasmt9u5c/</link>
+      <pubDate>Thu, 20 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/h8gasmt9u5c/</guid>
+      <description>昨天跑的好好项目,今天跑不起来 我们在开发周期比较长的前端项目的时候,必然会遇到依赖管理的问题. 我们在开发项目的时候,我们用了大量的三方库.这些三方的依赖库时不时的会更新自己的代码.
+第三方依赖库的代码更新会很容易造成代码运行的不稳定, 比如昨天还跑的好好的项目,另一位刚刚接手的同学重新安装依赖之后项目就完全跑不起来了. 或者自己机器跑的好好的代码,扔到打包机上重新打包之后就完全跑不起来.
+因为三方依赖库用的太多,很多时候并不能很快速的定位到项目为什么跑不起来. 特别是开发RN项目的时候,一个依赖更新的问题可能会定位一个大半天才能找到罪魁祸首(曾经的我为了这种事情浪费了大量的青春).
+锁定NPM依赖版本 对于那些你不熟悉,或者不能保证稳定的三方npm包,我这边的做法是直接锁定版本号. 这件事情做的越早越好,不要盲目相信三方npm越更新性能越好. 他会时不时的让你痛一下.让你浪费大量的时间去寻找到底是谁影响了你的代码正常运行.
+第三方npm包有bug如何解决? 升级原有npm包版本 如果你发现了你的第三方npm有bug,建议不要盲目的升级版本.
+第一步你需要先看这个npm包的 changelog,如果有明确修复过这个bug, 才会建议你升级.但是不能保证升级之后可能会带来其他bug.
+修掉bug发布在公司私有源 但是我还是比较建议,在原来版本的npm包上修掉这个bug,并且修改npm包名为公司内部包,发布到公司私有npm源上.
+如果因为npm版本的改动,导致项目不稳定,也可以缩小排查范围,快速定位到是哪一个npm库导致的问题.
+例如: mobx =&amp;gt; @公司源/mobx
+小技巧: .npmrc配置 如果你有发布到公司私有源的三方npm包, 你可以尝试修改.npmrc文件使用npm名的作用域直接指向公司私有源
+例如:
+@公司源:registry=http://npm.xxx.com @tarojs:registry=http://npm.xxx.com  所有项目依赖统一管理 上面说到了我们将所有的有不稳定的npm包锁定版本,保证项目长期维护可以正常运行. 现在我们团队开发的跨端项目将近上百个. 为了保证上百个的项目可以长期稳定运行. 我将所有的依赖封装成了一个npm库,里面没有任何的js代码,只有稳定的依赖. 所有的项目都会引入这个核心的依赖,以保证所有项目可以稳定运行.
+保证项目使用npm的差异化,强行指定版本 所有依赖全部统一之后,肯定会有项目因为一些原因不想使用个别的三方npm包. 这里就必须要提到package.json依赖管理的 resolutions属性. 这样npm就会将多版本共存的版本,强行指定某一版本,满足个别项目的特定需求.
+使用方法如下:
+// package.json { &amp;quot;resolutions&amp;quot;: { &amp;quot;hoek&amp;quot;: &amp;quot;4.2.1&amp;quot; } }  当然你也可以使用这个工具,将依赖强制指定版本: https://www.npmjs.com/package/npm-force-resolutions
+加速你的npm安装速度 除了大家都知道的npm换源之外,npm依赖的执行文件下载也会拖慢你的依赖安装速度.
+以下是我们团队使用的.npmrc配置,对于一些npm依赖的执行文件, 可以使用该配置加速你的npm构建速度.
+ .npmrc文件的位置在你的home目录下,你也可以在项目根目录创建该文件.
+ chromedriver-cdnurl=https://npm.taobao.org/mirrors/chromedriver couchbase-binary-host-mirror=https://npm.taobao.org/mirrors/couchbase/v{version} debug-binary-host-mirror=https://npm.taobao.org/mirrors/node-inspector electron-mirror=https://npm.taobao.org/mirrors/electron/ flow-bin-binary-host-mirror=https://npm.taobao.org/mirrors/flow/v fse-binary-host-mirror=https://npm.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之跨端开发新时代的思考与举措</title>
+      <link>https://alili.tech/archive/bjg2zsidz0a/</link>
+      <pubDate>Tue, 16 Jun 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/bjg2zsidz0a/</guid>
+      <description>##
+新时代 跨端框架的出现,前端的浏览器兼容过渡到了客户端平台兼容的新时代.
+对于初创公司而言,这种框架可以快速试错与降低人力与时间成本.
+为什么选择Taro  并不是说Taro方案有多优秀,就当前时间节点看来目前的所有跨端框架都还处于完善阶段.最完善的端可能就是小程序与H5了.
+ 但是对于有着对跨端开发有着强烈需求的公司来说,这些还远远不够.
+只是第一眼看上去Taro比较适合我们的现有业务.后续各种端的数量增大,如何从容对待.
+目前也还是未知数.就团队而言,前端输出突然猛增,其他配套设施没跟上等于随时翻车.目前我们面临的最大问题就是测试资源的问题.
+对于跨端技术而言,目前相对完善且符合公司业务的技术框架可以选择
+ Taro
+ uni-app
+  一个类React, 一个类Vue.
+在框架层面,两种技术框架提供着非常接近的多端兼容方案.
+最大的不同是React 与 Vue的区别.当然,uni-app 提供了小程序容器方案.
+taro这边目前还没有.
+ 就目前对Taro来看,直接实现Taro to uni小程序理论上是可以实现的.
+ 在Taro next版本中,已经支持对vue语法, 那这样后续是否会出现多端框架to多端框架的局面呢?
+回到问题本身,为什么我们选择Taro呢,
+ 团队组建之初使用React技术栈
+ 我们在RN端有了一定的探索
+ Taro支持快应用
+  就历史包袱来看,选择Taro过渡成本是相对较小的.
+目标  一处代码,多端运行.
+ 减少维护成本
+ 多端快速上线
+   如果就快速上线来看,人力成本在短期内看,是非常可观的.但是一旦项目变大,团队变得也越大的时候.
+ 自动化测试,而项目工程化没有跟上,那就直接天堂变地狱.
+处境与心态 目前使用taro开发单端,基本上没有太大的问题.目前遇到的问题,都有办法可以解决的.
+唯一占用开发工作量的是,如何处理代码在多端中的兼容问题.
+所以处理兼容问题的方法与技巧还有多端开发的意识就尤为重要了.
+还有一个就是开发者的心态问题,因为要开发多端,多端差异还是会有的.
+在开发多端的同时,也要学习多端的开发方式.一来二去的,很容易形态奔溃.
+但是如果跨越了这一时期,了解了各端的特点,后续面对一些问题都会游刃有余了~
+适配最佳路径 经过各种实践,我们认为一下开发的兼容路径是相对简单的.
+在适配的过程中,主要还是样式的问题比较多.如果反向适配,会极其痛苦,
+因为你之前写的任意一行代码,都可能是后面的bug.
+ 可能在后续的发展中,这种类似短板问题会越来越不明显.</description>
+    </item>
+    
+  </channel>
+</rss>

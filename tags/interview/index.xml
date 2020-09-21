@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Interview on Hello Alili</title>
+    <link>https://alili.tech/tags/interview/</link>
+    <description>Recent content in Interview on Hello Alili</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 07 Jan 2019 22:17:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://alili.tech/tags/interview/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>前端面试知识点收集 - JavaScript篇</title>
+      <link>https://alili.tech/archive/6kodkbztk2h/</link>
+      <pubDate>Mon, 07 Jan 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/6kodkbztk2h/</guid>
+      <description>JavaScript 面试知识点总结 1. 介绍 js 的基本数据类型。 js 一共有六种基本数据类型，分别是 Undefined、Null、Boolean、Number、String，还有在 ES6 中新增的 Symbol 类型， 代表创建后独一无二且不可变的数据类型，它的出现我认为主要是为了解决可能出现的全局变量冲突的问题。  2. JavaScript 有几种类型的值？你能画一下他们的内存图吗？ 涉及知识点：
+ 栈：原始数据类型（Undefined、Null、Boolean、Number、String） 堆：引用数据类型（对象、数组和函数）  两种类型的区别是：存储位置不同。 原始数据类型直接存储在栈（stack）中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储。 引用数据类型存储在堆（heap）中的对象，占据空间大、大小不固定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在 栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实 体。  回答：
+js 可以分为两种类型的值，一种是基本数据类型，一种是复杂数据类型。 基本数据类型....（参考1） 复杂数据类型指的是 Object 类型，所有其他的如 Array、Date 等数据类型都可以理解为 Object 类型的子类。 两种类型间的主要区别是它们的存储位置不同，基本数据类型的值直接保存在栈中，而复杂数据类型的值保存在堆中，通过使用在栈中 保存对应的指针来获取堆中的值。  详细资料可以参考： 《JavaScript 有几种类型的值？》 《JavaScript 有几种类型的值？能否画一下它们的内存图；》
+3. 什么是堆？什么是栈？它们之间有什么区别和联系？ 堆和栈的概念存在于数据结构中和操作系统内存中。 在数据结构中，栈中数据的存取方式为先进后出。而堆是一个优先队列，是按优先级来进行排序的，优先级可以按照大小来规定。完全 二叉树是堆的一种实现方式。 在操作系统中，内存被分为栈区和堆区。 栈区内存由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。 堆区内存一般由程序员分配释放，若程序员不释放，程序结束时可能由垃圾回收机制回收。  详细资料可以参考： 《什么是堆？什么是栈？他们之间有什么区别和联系？》
+4. 内部属性 [[Class]] 是什么？ 所有 typeof 返回值为 &amp;quot;object&amp;quot; 的对象（如数组）都包含一个内部属性 [[Class]]（我们可以把它看作一个内部的分类，而非 传统的面向对象意义上的类）。这个属性无法直接访问，一般通过 Object.</description>
+    </item>
+    
+    <item>
+      <title>前端面试知识点收集 - HTML篇</title>
+      <link>https://alili.tech/archive/aco9rw01fld/</link>
+      <pubDate>Sun, 06 Jan 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/aco9rw01fld/</guid>
+      <description>HTML 面试知识点总结 1. DOCTYPE 的作用是什么？ 相关知识点：
+ IE5.5 引入了文档模式的概念，而这个概念是通过使用文档类型（DOCTYPE）切换实现的。 &amp;lt;!DOCTYPE&amp;gt;声明位于 HTML 文档中的第一行，处于 &amp;lt;html&amp;gt; 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。 DOCTYPE 不存在或格式不正确会导致文档以兼容模式呈现。  回答（参考1-5）：
+ &amp;lt;!DOCTYPE&amp;gt; 声明一般位于文档的第一行，它的作用主要是告诉浏览器以什么样的模式来解析文档。一般指定了之后会以标准模式来 进行文档解析，否则就以兼容模式进行解析。在标准模式下，浏览器的解析规则都是按照最新的标准进行解析的。而在兼容模式下，浏 览器会以向后兼容的方式来模拟老式浏览器的行为，以保证一些老的网站的正确访问。 在 html5 之后不再需要指定 DTD 文档，因为 html5 以前的 html 文档都是基于 SGML 的，所以需要通过指定 DTD 来定义文 档中允许的属性以及一些规则。而 html5 不再基于 SGML 了，所以不再需要使用 DTD。  2. 标准模式与兼容模式各有什么区别？  标准模式的渲染方式和 JS 引擎的解析方式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示 ，模拟老式浏览器的行为以防止站点无法工作。  3. HTML5 为什么只需要写 &amp;lt;!DOCTYPE HTML&amp;gt;，而不需要引入 DTD？  HTML5 不基于 SGML，因此不需要对 DTD 进行引用，但是需要 DOCTYPE 来规范浏览器的行为（让浏览器按照它们应该的方式来运 行）。 而 HTML4.01 基于 SGML ，所以需要对 DTD 进行引用，才能告知浏览器文档所使用的文档类型。  4.</description>
+    </item>
+    
+    <item>
+      <title>前端面试知识点收集 - CSS篇</title>
+      <link>https://alili.tech/archive/63l6rtnya2e/</link>
+      <pubDate>Sat, 05 Jan 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/63l6rtnya2e/</guid>
+      <description>CSS 面试知识点总结 1.介绍一下标准的 CSS 的盒子模型？低版本 IE 的盒子模型有什么不同的？ 相关知识点：
+（1）有两种盒子模型：IE盒模型（border-box）、W3C标准盒模型（content-box） （2）盒模型：分为内容（content）、填充（padding）、边界（margin）、边框（border）四个部分 IE盒模型和W3C标准盒模型的区别： （1）W3C标准盒模型：属性width，height只包含内容content，不包含border和padding （2）IE盒模型：属性width，height包含content、border和padding，指的是content +padding+border。 在ie8+浏览器中使用哪个盒模型可以由box-sizing（CSS新增的属性）控制，默认值为content-box，即标准盒模型； 如果将box-sizing设为border-box则用的是IE盒模型。如果在ie6，7，8中DOCTYPE缺失会将盒子模型解释为IE 盒子模型。若在页面中声明了DOCTYPE类型，所有的浏览器都会把盒模型解释为W3C盒模型。  回答：
+盒模型都是由四个部分组成的，分别是margin、border、padding和content。 标准盒模型和IE盒模型的区别在于设置width和height时，所对应的范围不同。标准盒模型的width和height属性的 范围只包含了content，而IE盒模型的width和height属性的范围包含了border、padding和content。 一般来说，我们可以通过修改元素的box-sizing属性来改变元素的盒模型。  详细的资料可以参考： 《CSS 盒模型详解》
+2.CSS 选择符有哪些？ （1）id选择器（#myid） （2）类选择器（.myclassname） （3）标签选择器（div,h1,p） （4）后代选择器（h1 p） （5）相邻后代选择器（子）选择器（ul&amp;gt;li） （6）兄弟选择器（li~a） （7）相邻兄弟选择器（li+a） （8）属性选择器（a[rel=&amp;quot;external&amp;quot;]） （9）伪类选择器（a:hover,li:nth-child） （10）伪元素选择器（::before、::after） （11）通配符选择器（*）  3.::before 和:after 中双冒号和单冒号有什么区别？解释一下这 2 个伪元素的作用。 相关知识点：
+单冒号（:）用于CSS3伪类，双冒号（::）用于CSS3伪元素。（伪元素由双冒号和伪元素名称组成） 双冒号是在当前规范中引入的，用于区分伪类和伪元素。不过浏览器需要同时支持旧的已经存在的伪元素写法， 比如:first-line、:first-letter、:before、:after等， 而新的在CSS3中引入的伪元素则不允许再支持旧的单冒号的写法。 想让插入的内容出现在其它内容前，使用::before，否者，使用::after； 在代码顺序上，::after生成的内容也比::before生成的内容靠后。 如果按堆栈视角，::after生成的内容会在::before生成的内容之上。  回答：
+在css3中使用单冒号来表示伪类，用双冒号来表示伪元素。但是为了兼容已有的伪元素的写法，在一些浏览器中也可以使用单冒号 来表示伪元素。 伪类一般匹配的是元素的一些特殊状态，如hover、link等，而伪元素一般匹配的特殊的位置，比如after、before等。  4.伪类与伪元素的区别 css引入伪类和伪元素概念是为了格式化文档树以外的信息。也就是说，伪类和伪元素是用来修饰不在文档树中的部分，比如，一句 话中的第一个字母，或者是列表中的第一个元素。 伪类用于当已有的元素处于某个状态时，为其添加对应的样式，这个状态是根据用户行为而动态变化的。比如说，当用户悬停在指定的 元素时，我们可以通过:hover来描述这个元素的状态。 伪元素用于创建一些不在文档树中的元素，并为其添加样式。它们允许我们为元素的某些部分设置样式。比如说，我们可以通过::be fore来在一个元素前增加一些文本，并为这些文本添加样式。虽然用户可以看到这些文本，但是这些文本实际上不在文档树中。 有时你会发现伪元素使用了两个冒号（::）而不是一个冒号（:）。这是CSS3的一部分，并尝试区分伪类和伪元素。大多数浏览 器都支持这两个值。按照规则应该使用（::）而不是（:），从而区分伪类和伪元素。但是，由于在旧版本的W3C规范并未对此进行 特别区分，因此目前绝大多数的浏览器都支持使用这两种方式表示伪元素。  详细资料可以参考： 《总结伪类与伪元素》</description>
+    </item>
+    
+    <item>
+      <title>前端面试知识点收集 - 综合篇</title>
+      <link>https://alili.tech/archive/7bp4sppqtsy/</link>
+      <pubDate>Fri, 04 Jan 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/7bp4sppqtsy/</guid>
+      <description>$HTML， HTTP，web 综合问题 常见排序算法的时间复杂度,空间复杂度 前端需要注意哪些 SEO  合理的 title、description、keywords：搜索对着三项的权重逐个减小，title 值强调重点即可，重要关键词出现不要超过 2 次，而且要靠前，不同页面 title 要有所不同；description 把页面内容高度概括，长度合适，不可过分堆砌关键词，不同页面 description 有所不同；keywords 列举出重要关键词即可 语义化的 HTML 代码，符合 W3C 规范：语义化代码让搜索引擎容易理解网页 重要内容 HTML 代码放在最前：搜索引擎抓取 HTML 顺序是从上到下，有的搜索引擎对抓取长度有限制，保证重要内容一定会被抓取 重要内容不要用 js 输出：爬虫不会执行 js 获取内容 少用 iframe：搜索引擎不会抓取 iframe 中的内容 非装饰性图片必须加 alt 提高网站速度：网站速度是搜索引擎排序的一个重要指标  web 开发中会话跟踪的方法有哪些  cookie session url 重写 隐藏 input ip 地址  &amp;lt;img&amp;gt;的title和alt有什么区别  title是global attributes之一，用于为元素提供附加的 advisory information。通常当鼠标滑动到元素上的时候显示。 alt是&amp;lt;img&amp;gt;的特有属性，是图片内容的等价描述，用于图片无法加载时显示、读屏器阅读图片。可提图片高可访问性，除了纯装饰图片外都必须设置有意义的值，搜索引擎会重点分析。  doctype 是什么,举例常见 doctype 及特点  &amp;lt;!doctype&amp;gt;声明必须处于 HTML 文档的头部，在&amp;lt;html&amp;gt;标签之前，HTML5 中不区分大小写 &amp;lt;!</description>
+    </item>
+    
+  </channel>
+</rss>

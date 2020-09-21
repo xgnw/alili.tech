@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端架构 on Hello Alili</title>
+    <link>https://alili.tech/tags/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/</link>
+    <description>Recent content in 前端架构 on Hello Alili</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 27 Aug 2020 22:17:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://alili.tech/tags/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Taro跨端开发之让Taro UI支持React Native</title>
+      <link>https://alili.tech/archive/wwfw2u086as/</link>
+      <pubDate>Thu, 27 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/wwfw2u086as/</guid>
+      <description>Taro UI 不支持RN的窘境 Taro UI 文档上很早就说明会有可能支持rn了,但是快一年多了,因为taro ui团队人力的问题一直没有兼容到rn.
+业务紧迫,我们等不到那一天了.自己动手丰衣足食.
+Taro 传统组件打包在RN上的问题 一般来说,组件库打完包之后 dist/index.js文件会是这样的.
+根据运行时的环境变量区分是否要引入哪一个组件库.
+if (process.env.TARO_ENV === &#39;weapp&#39;) { module.exports = require(&#39;./weapp/ui&#39;) module.exports.default = module.exports } else if (process.env.TARO_ENV === &#39;h5&#39;) { module.exports = require(&#39;./h5/ui&#39;) module.exports.default = module.exports } else { module.exports = require(&#39;./weapp/ui&#39;) module.exports.default = module.exports }  理想模式下,只要加入一个rn的环境判断,就可以做到rn组件库的引入了.
+if (process.env.TARO_ENV === &#39;weapp&#39;) { module.exports = require(&#39;./weapp/ui&#39;) module.exports.default = module.exports } else if (process.env.TARO_ENV === &#39;h5&#39;) { module.exports = require(&#39;.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之多业务模块管理 React Native篇(终篇)</title>
+      <link>https://alili.tech/archive/2f9lla2yjb5/</link>
+      <pubDate>Tue, 25 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/2f9lla2yjb5/</guid>
+      <description>React Native 热更新方案 rn的业务越来越庞大,同时协同的团队越来越多. rn的动态化就必须提上日程了. 对于rn热更新,首当其冲的问题就是分包.
+rn的基础库很大,再加上我们依赖了很多的三方库.这些代码就必须在分包的时候单独剥离出来. 业务包让他比较纯粹的只有业务代码. 这样就可以保证业务包的体积比较小,保证热更新时候的速度.
+使用metro分包 React Native 提供的 metro 自带分包功能。metro我们本来就一直在用,只要在metro打包的时候,提供相应的打包规则. 就可以实现rn的分包了.
+示例: ios打包
+node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file rn入口文件.js --bundle-output ./xxx/ --assets-dest ./xxx/ --config /{你的绝对路径}/你的metro配置文件.js  metro 关键api介绍 我们分包需要用的选项主要是两个：
+ createModuleIdFactory：这个函数传入要打包的 module 文件的绝对路径，返回这个 module 在打包的时候生成的 id。
+ processModuleFilter：这个函数传入 module 信息，返回一个 boolean 值，false 则表示这个文件不打入当前的包。
+  主工程分包 之前我们有提到过我们有一个项目是主工程,里面没有任何的业务代码.只有一些代码运行需要的所有依赖.
+我们需要将所有的依赖全部收集起来,当业务模块打包的时候,发现本地有这个依赖就可以使用 processModuleFilter方法排除掉.
+因为我们的主工程与业务项目的依赖版本都是高度统一的. 所以我们node_modules下面的依赖包路径都是完全一致的.
+Taro跨端开发之依赖管理
+主工程的metro配置文件示例:
+function createModuleIdFactory() { return path =&amp;gt; { // 在这里我们拿到依赖的文件路径, // 我们需要在这个函数块中,将路径以收集并且将这些数据生成文件 // 部署到我们内网的服务器中 // 当业务模块需要打包的时候,是否要将代码打进包中,将以这个文件为依据 return path; }; } module.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之多业务模块管理 React Native篇(中)</title>
+      <link>https://alili.tech/archive/j4ylxksvfa8/</link>
+      <pubDate>Sun, 23 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/j4ylxksvfa8/</guid>
+      <description>实现一个简单的模块管理工具,解决npm拉取业务模块慢的问题 使用npm拉取git仓库,速度其实还是可以接受的. 主要慢的地方在于 postinstall的时候需要在npm拉取git仓库的时候,需要重新构建项目代码.还有一点就是业务模块也有依赖,npm install的时候也需要重新拉取相同的依赖.
+这两个步骤其实是可以省略的,解决的办法就是可以实现一个简单的模块管理工具来替代npm加载业务模块的处理.
+创建一个配置文件 module.exports = { &amp;quot;Module1&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;http://xxx1.git&amp;quot;, &amp;quot;moduleName&amp;quot;: [ &amp;quot;模块名称&amp;quot; ], &amp;quot;branch&amp;quot;: &amp;quot;develop&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;taro&amp;quot; }, &amp;quot;Module2&amp;quot;: { &amp;quot;url&amp;quot;: &amp;quot;http://xxx2.git&amp;quot;, &amp;quot;moduleName&amp;quot;: [ &amp;quot;模块名称&amp;quot; ], &amp;quot;branch&amp;quot;: &amp;quot;develop&amp;quot;, &amp;quot;type&amp;quot;: &amp;quot;taro&amp;quot; } }  因为每一个项目都会用到这一个文件,把这个文件放到服务器上. 在业务模块初始化的时候,自动拉取解析这个文件.再使用nodejs拉取相应的git仓库.
+拉取git仓库 使用download-git-repo拉取git仓库的代码放到node_modules目录下. 这样在项目中,我就可以引用普通npm一样引入这个仓库的代码了.
+这是download-git-repo的地址与使用方法 https://www.npmjs.com/package/download-git-repo
+模拟npm生命周期 代码拉下来之后,还需要用postinstall来构建业务代码, 所以需要使用nodejs遍历以下业务模块的目录,读取目录下的每一个packages.json.
+如果有npm钩子的,就执行一下里面的script.
+大致示例代码如下:
+// 示例代码,仅供参考 const spawn = require(&#39;cross-spawn&#39;); const fse = require(&#39;fs-extra&#39;); const packageData = fse.readJsonSync(&#39;./packages.json&#39;); if (packageData.scripts.preinstall) { spawn.sync(&#39;npm&#39;,[&#39;run&#39;,&#39;preinstall&#39;]); } if (packageData.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之多业务模块管理 React Native篇(上)</title>
+      <link>https://alili.tech/archive/w650d9ok34i/</link>
+      <pubDate>Fri, 21 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/w650d9ok34i/</guid>
+      <description>原生RN项目与Taro如何共存? 我们团队一开始就有实践原生React Native的项目,很长一段时间,
+所有的业务模块都是在一个项目里面开发维护,时间久了这个项目就变成了一个巨无霸项目.
+再加上后来引进了基于Taro开发的rn项目,为了保证原生与Taro的RN共存,
+不管是原生rn项目还是taro项目的package.json文件的main对外导出的索引文件格式都是一致的.
+我们使用以下方案来维护我们的代码.
+使用npm来管理我们的业务模块 RN业务的主工程 这是我最初实践的方案,首先我们创建一个项目为RN的主工程.
+里面没有任何的业务代码,只有在根目录下有一个index.js的业务索引文件.
+它大概是这样的:
+import { AppRegistry} from &#39;react-native&#39;; import Module1 from &#39;Module1&#39;; import Module2 from &#39;Module2&#39;; import Module3 from &#39;Module3&#39;; AppRegistry.registerComponent(&#39;Module1&#39;, () =&amp;gt; Module1); AppRegistry.registerComponent(&#39;Module2&#39;, () =&amp;gt; Module2); AppRegistry.registerComponent(&#39;Module3&#39;, () =&amp;gt; Module3);  之前的一篇文章我已经提到,我们所有的模块依赖都是统一的,并且版本锁死.
+有兴趣的可以点击查看:
+Taro跨端开发之依赖管理
+所以我的主工程的依赖与业务模块的依赖是保持一致的.
+使用NPM管理业务模块 我们会把所有的业务模块当成npm来管理,因为npm有很多的生命周期钩子使用.
+在统一了npm script 命令之后,很容易统一管理他们.
+当然这些业务模块我们不会把他发布到npm服务器上,因为业务代码会频繁变动,如果每一次提交都要上传到npm服务器,自然会添加开发人员的代码管理成本(发布npm包很烦的)
+所以我们使用 npm + git 地址来拉取我们的业务模块.
+例如:
+主工程的package.json { &amp;quot;name&amp;quot;: &amp;quot;base&amp;quot;, &amp;quot;version&amp;quot;: &amp;quot;0.0.6&amp;quot;, &amp;quot;scripts&amp;quot;: { &amp;quot;build&amp;quot;:&amp;quot;构建rn的相关操作&amp;quot; }, &amp;quot;dependencies&amp;quot;: { &amp;quot;公共依赖包&amp;quot;: &amp;quot;1.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之依赖管理</title>
+      <link>https://alili.tech/archive/h8gasmt9u5c/</link>
+      <pubDate>Thu, 20 Aug 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/h8gasmt9u5c/</guid>
+      <description>昨天跑的好好项目,今天跑不起来 我们在开发周期比较长的前端项目的时候,必然会遇到依赖管理的问题. 我们在开发项目的时候,我们用了大量的三方库.这些三方的依赖库时不时的会更新自己的代码.
+第三方依赖库的代码更新会很容易造成代码运行的不稳定, 比如昨天还跑的好好的项目,另一位刚刚接手的同学重新安装依赖之后项目就完全跑不起来了. 或者自己机器跑的好好的代码,扔到打包机上重新打包之后就完全跑不起来.
+因为三方依赖库用的太多,很多时候并不能很快速的定位到项目为什么跑不起来. 特别是开发RN项目的时候,一个依赖更新的问题可能会定位一个大半天才能找到罪魁祸首(曾经的我为了这种事情浪费了大量的青春).
+锁定NPM依赖版本 对于那些你不熟悉,或者不能保证稳定的三方npm包,我这边的做法是直接锁定版本号. 这件事情做的越早越好,不要盲目相信三方npm越更新性能越好. 他会时不时的让你痛一下.让你浪费大量的时间去寻找到底是谁影响了你的代码正常运行.
+第三方npm包有bug如何解决? 升级原有npm包版本 如果你发现了你的第三方npm有bug,建议不要盲目的升级版本.
+第一步你需要先看这个npm包的 changelog,如果有明确修复过这个bug, 才会建议你升级.但是不能保证升级之后可能会带来其他bug.
+修掉bug发布在公司私有源 但是我还是比较建议,在原来版本的npm包上修掉这个bug,并且修改npm包名为公司内部包,发布到公司私有npm源上.
+如果因为npm版本的改动,导致项目不稳定,也可以缩小排查范围,快速定位到是哪一个npm库导致的问题.
+例如: mobx =&amp;gt; @公司源/mobx
+小技巧: .npmrc配置 如果你有发布到公司私有源的三方npm包, 你可以尝试修改.npmrc文件使用npm名的作用域直接指向公司私有源
+例如:
+@公司源:registry=http://npm.xxx.com @tarojs:registry=http://npm.xxx.com  所有项目依赖统一管理 上面说到了我们将所有的有不稳定的npm包锁定版本,保证项目长期维护可以正常运行. 现在我们团队开发的跨端项目将近上百个. 为了保证上百个的项目可以长期稳定运行. 我将所有的依赖封装成了一个npm库,里面没有任何的js代码,只有稳定的依赖. 所有的项目都会引入这个核心的依赖,以保证所有项目可以稳定运行.
+保证项目使用npm的差异化,强行指定版本 所有依赖全部统一之后,肯定会有项目因为一些原因不想使用个别的三方npm包. 这里就必须要提到package.json依赖管理的 resolutions属性. 这样npm就会将多版本共存的版本,强行指定某一版本,满足个别项目的特定需求.
+使用方法如下:
+// package.json { &amp;quot;resolutions&amp;quot;: { &amp;quot;hoek&amp;quot;: &amp;quot;4.2.1&amp;quot; } }  当然你也可以使用这个工具,将依赖强制指定版本: https://www.npmjs.com/package/npm-force-resolutions
+加速你的npm安装速度 除了大家都知道的npm换源之外,npm依赖的执行文件下载也会拖慢你的依赖安装速度.
+以下是我们团队使用的.npmrc配置,对于一些npm依赖的执行文件, 可以使用该配置加速你的npm构建速度.
+ .npmrc文件的位置在你的home目录下,你也可以在项目根目录创建该文件.
+ chromedriver-cdnurl=https://npm.taobao.org/mirrors/chromedriver couchbase-binary-host-mirror=https://npm.taobao.org/mirrors/couchbase/v{version} debug-binary-host-mirror=https://npm.taobao.org/mirrors/node-inspector electron-mirror=https://npm.taobao.org/mirrors/electron/ flow-bin-binary-host-mirror=https://npm.taobao.org/mirrors/flow/v fse-binary-host-mirror=https://npm.</description>
+    </item>
+    
+    <item>
+      <title>Taro跨端开发之跨端开发新时代的思考与举措</title>
+      <link>https://alili.tech/archive/bjg2zsidz0a/</link>
+      <pubDate>Tue, 16 Jun 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/bjg2zsidz0a/</guid>
+      <description>##
+新时代 跨端框架的出现,前端的浏览器兼容过渡到了客户端平台兼容的新时代.
+对于初创公司而言,这种框架可以快速试错与降低人力与时间成本.
+为什么选择Taro  并不是说Taro方案有多优秀,就当前时间节点看来目前的所有跨端框架都还处于完善阶段.最完善的端可能就是小程序与H5了.
+ 但是对于有着对跨端开发有着强烈需求的公司来说,这些还远远不够.
+只是第一眼看上去Taro比较适合我们的现有业务.后续各种端的数量增大,如何从容对待.
+目前也还是未知数.就团队而言,前端输出突然猛增,其他配套设施没跟上等于随时翻车.目前我们面临的最大问题就是测试资源的问题.
+对于跨端技术而言,目前相对完善且符合公司业务的技术框架可以选择
+ Taro
+ uni-app
+  一个类React, 一个类Vue.
+在框架层面,两种技术框架提供着非常接近的多端兼容方案.
+最大的不同是React 与 Vue的区别.当然,uni-app 提供了小程序容器方案.
+taro这边目前还没有.
+ 就目前对Taro来看,直接实现Taro to uni小程序理论上是可以实现的.
+ 在Taro next版本中,已经支持对vue语法, 那这样后续是否会出现多端框架to多端框架的局面呢?
+回到问题本身,为什么我们选择Taro呢,
+ 团队组建之初使用React技术栈
+ 我们在RN端有了一定的探索
+ Taro支持快应用
+  就历史包袱来看,选择Taro过渡成本是相对较小的.
+目标  一处代码,多端运行.
+ 减少维护成本
+ 多端快速上线
+   如果就快速上线来看,人力成本在短期内看,是非常可观的.但是一旦项目变大,团队变得也越大的时候.
+ 自动化测试,而项目工程化没有跟上,那就直接天堂变地狱.
+处境与心态 目前使用taro开发单端,基本上没有太大的问题.目前遇到的问题,都有办法可以解决的.
+唯一占用开发工作量的是,如何处理代码在多端中的兼容问题.
+所以处理兼容问题的方法与技巧还有多端开发的意识就尤为重要了.
+还有一个就是开发者的心态问题,因为要开发多端,多端差异还是会有的.
+在开发多端的同时,也要学习多端的开发方式.一来二去的,很容易形态奔溃.
+但是如果跨越了这一时期,了解了各端的特点,后续面对一些问题都会游刃有余了~
+适配最佳路径 经过各种实践,我们认为一下开发的兼容路径是相对简单的.
+在适配的过程中,主要还是样式的问题比较多.如果反向适配,会极其痛苦,
+因为你之前写的任意一行代码,都可能是后面的bug.
+ 可能在后续的发展中,这种类似短板问题会越来越不明显.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化进阶4 - 跨框架共享组件(微件化)</title>
+      <link>https://alili.tech/archive/vgnhe9tfqnc/</link>
+      <pubDate>Sat, 22 Jun 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/vgnhe9tfqnc/</guid>
+      <description>在微前端中,我们可以根据自己的业务需求,让子模块使用不同框架技术栈.虽然到了这一步已经很美好了,那这就是微前端的终点吗?
+答案是否定的,微前端的边界还可以更进一步的拓宽.
+上一篇微前端的文章 https://alili.tech/archive/qh7x5i5szfh/ 给大家介绍了,如何在相同技术栈的子模块之间,相互调用React组件.
+那今天要说的就是,如何在不同技术栈之间的子模块相调用不同技术栈的组件.
+最终,我们只需要根据我们的需求调用相关功能的组件,我们不需要管他是 react ,vue或者是angular写的.
+你只管用,只知道他是一个组件就好了,不用关心太多~ 对于团队的组件积累,是有极大好处的.
+场景 一般情况下,一个公司的前端团队的技术栈都是统一的.但也有前端团队使用不统一技术栈的时候. 比如:
+ 时代的变迁,升级技术栈导致内部技术栈不统一 项目众多,因为需求不一致,其他的技术栈对于项目更加有力 &amp;hellip;其他管理原因  当我们已经使用微前端架构来构建我们的项目的时候,我们的子模块有可能因为我们项目的需求导致使用了其他的技术栈,
+如果我们使用了其他的技术栈,我们原来封装的组件就不能在新的项目中用了,所以我们需要要求组件可以跨框架共享使用.
+我们该怎么做? 这里有提到微件仓库模块,这是一个单独的项目.你可以理解是以前的旧项目,当你需要这个旧项目的某一个组件的时候,可以直接从这个项目里面拿.
+你也可以做成一个只提供组件的项目,毕竟在运行时一个子模块挂载到我们的项目中来是没有任何资源消耗的.
+我们只要知道我们需要的组件从哪里来就行了,然后根据组件还有之前定义好的路由找到这个组件,调用他,使用他就好了.
+基于Web component封装我们的组件 不同框架开发的组件,差异很大.想要串在一起使用,基本上是不可能的. 好在目前所有的框架都支持让组件以webcomponent的形式存在.
+react: https://react.docschina.org/docs/web-components.html
+vue : https://github.com/vuejs/vue-web-component-wrapper
+angular: https://www.angular.cn/guide/elements#transforming-components-to-custom-elements
+关于Web Components 的详细介绍 https://developer.mozilla.org/zh-CN/docs/Web/Web_Components
+加载性能 如果一个页面依赖了很多跨框架的组件,必然出现网络方面的性能问题.
+我们会在请求的中间加一层node服务,当页面请求多个跨框架的组件的时候,我们的node就会合并成单个文件,并且保存在硬盘上.
+所以说,当这个页面被请求过之后,页面零散的组件便会合并在一起,第二次其他用户请求就不会有这种合并文件的处理,直接返回静态资源给客户端.
+这种方式也不会对nodejs有太多额外的压力,
+因为现在的页面结构还是相对静态稳定的,没有太多的动态定制化的东西.这个方案足以应付大多数的应用场景.
+尾巴 经过不停的探索,微前端终于走到了微件化的这一步,感慨颇多~
+我们从一个窗口只能加载单个页面, 再到多个页面(SPA), 再到现在的多个项目(微前端), 然后再可以控制不同组件在多个项目之间随意组合(微件化).
+微前端的应用边界应该还可以拓展的更宽,还可以开发出更多惊喜的操作.
+相关系列文章 https://alili.tech/tags/microfrontend/</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化进阶3 - 跨模块共享组件</title>
+      <link>https://alili.tech/archive/qh7x5i5szfh/</link>
+      <pubDate>Sun, 12 May 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/qh7x5i5szfh/</guid>
+      <description>前端微服务化之后,我们会面临一个问题: 模块之间重复代码不能复用的问题.
+如果使用npm管理我们的重复代码,我们会多出维护npm包的成本. 在子模块更新npm包版本,也是一件很麻烦的事情. 在js文件体积上也没有任何的优化.
+组件共享 今天我们就来聊一聊如何在多个模块中同时使用一个组件.
+思路 在base模块管理公共组件,将组件封装成动态组件,这样在打包的时候我们就可以将该组件切割成单独文件了. 当其他的子模块需要这个组件的时候,向Base模块动态获取.
+实践 动态组件的封装 为了让其他模块可以按需加载我们的公共组件,我们需要对已有的组件封装成动态组件.
+我这里使用的是 umi/dynamic,
+他是基于https://github.com/jamiebuilds/react-loadable 封装了一层. 有兴趣的小伙伴可以自行了解.
+import React from &#39;react&#39;; import dynamic from &#39;umi/dynamic&#39;; import PageLoading from &#39;@/components/PageLoading&#39; export const Demo = dynamic(import( `../Demo`), {loading: () =&amp;gt; &amp;lt;PageLoading /&amp;gt;}) export default Demo;  对外提供获取动态组件的方法 在加载Base模块的时候,我们可以在window下暴露一个调用该模块动态组件的方法
+window.getDynamicComponent = async function(name) { let component = null; component = await import(`@/components/dynamic/${name}`); return component[name]; };  子模块调用公共组件 因为base模块提供了一个获取公共组件的全局方法, 我们就可以在任何模块任何需要调用公共组件的地方去是使用它了.
+// 获取组件 let component = await window.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化进阶2 - 本地开发指南</title>
+      <link>https://alili.tech/archive/3xwbcv1w21i/</link>
+      <pubDate>Mon, 22 Apr 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/3xwbcv1w21i/</guid>
+      <description>使用single-spa构建我们的微服务化的前端应用之后,其实有一个问题会一直困扰着我们, 就是如何有效的开发?如何与我们平时开发的前端应用一样简单,容易上手. 今天就以umi子模块为例,希望给到大家一个思路
+今天我就介绍一种方法,希望对大家有帮助.
+模块加载器 是否还记得我之前的模块加载器, https://alili.tech/archive/1a60cede/
+我们只需要将原来模块的加载器,封装成npm包.
+然后在我们开发子模块项目的时候,运行我们的加载器 // umi src/app.js import bootstrap from &#39;@demo/demo-module-dev-loader&#39; //封装过后的npm包 import store from &#39;store&#39;; // 我们用于通讯的store文件 export async function render(oldRender) { if (process.env.NODE_ENV === &#39;development&#39;) { const main = oldRender(); const res = await window.fetch(&#39;./project.json&#39;); let currentProject = await res.json(); bootstrap({ main, store, prefix: currentProject.prefix }); } else { oldRender(); } }  module-dev-loader 我们的demo-module-dev-loader里一样会有一个 Bootstrap.js文件,我们对他进行一些小的修改.
+import * as singleSpa from &#39;single-spa&#39;; import { registerApp,registerLocal } from &#39;.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化进阶1 - 基于umi的子模块方案</title>
+      <link>https://alili.tech/archive/9xuojm75d2a/</link>
+      <pubDate>Sat, 13 Apr 2019 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/9xuojm75d2a/</guid>
+      <description>距离第一篇聊前端微服务的文章已经时隔大半年,很多人对此感兴趣.
+今天我们就聊一聊,我们如何基于umi来打造一个更完善的前端微服务的子模块.
+如果你用的是react以外的前端技术栈, 我的很多处理做法也可以应用在其他技术栈上.
+希望对你也有所帮助.
+优秀的umi框架 在前端中后台项目上,前端微服务化的需求相对是比较旺盛一些的.
+说到中后台,很多企业都是基于antd的组件来构建自己的项目.
+自去年的see conf之后,蚂蚁的一款可插拔的企业级 react 应用框架 umi发布了.
+这款框架与antd息息相关,antd结合umi使用那是相当的自然与流畅.
+可以说,基于umi与antd构建的项目非常的漂亮.这么优秀的框架,如果让他适用于我们的前端微服务架构,岂不美哉?
+umi也有相关的类似微服务方案: https://github.com/umijs/umi-example-monorepo
+但是umi提供的方案,有很大的局限性. 如果可以接入single-spa的微服务方案,独立开发,独立部署等等的前端微服务化红利, 会让你的项目日后有更大的发展空间.
+基于umi插件机制做到前端微服务化 umi 提供了非常强大的插件机制,正是由于这一点,我们才可以让umi也可以接入到微服务架构中来
+umi插件介绍 umi插件的基本介绍:
+https://umijs.org/zh/plugin/
+umi插件开发 这里介绍了如何开发一个简单的umi插件:
+https://umijs.org/zh/plugin/develop.html
+接入single-spa的umi插件 export default (api, opts) =&amp;gt; { // 以下的所有代码都写在这里面哦 };  渲染入口处理方法 定义一个动态的元素,当我们的base app 需要加载子模块的时候,会渲染出子模块需要渲染元素.
+我们的子模块找到了自己模块需要渲染的节点的时候,就会渲染出来.
+const domElementGetterStr = ` function domElementGetter() { let el = document.getElementById(&#39;submodule-page&#39;) if (!el) { el = document.createElement(&#39;div&#39;) el.id = &#39;submodule-page&#39; } let timer = null timer = setInterval(() =&amp;gt; { if (document.</description>
+    </item>
+    
+    <item>
+      <title>Single-SPA微前端框架的使用Demo汇总</title>
+      <link>https://alili.tech/archive/22975f44/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/22975f44/</guid>
+      <description>这些是在github能找到的single-spa微前端的Demo:
+single-spa-examples 这是一个single-spa做的官方例子,这是在线demo.
+simple-single-spa-webpack-example 这是基于webpack构建的使用例子,webpakc版本可能有点低,但是思想是一样的.
+single-spa-angular-cli-examples 基于angular-cli做的angular例子,适用于angular 2.0+ 的版本.
+single-spa-es5-angularjs angularjs的例子,也就是angularjs1.0的版本.
+single-spa-portal-example 这已经是一个非常完整的多技术栈用例了,里面集成了多技术栈与模块之间通讯的思路,非常值得研究.
+microfrontend-base-demo 这是在我们项目中萃取的base模块demo
+microfrontend-submodule-demo 这是在我们项目中萃取的子模块demo</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案8 - 二次构建</title>
+      <link>https://alili.tech/archive/ce685b9f/</link>
+      <pubDate>Fri, 07 Sep 2018 01:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/ce685b9f/</guid>
+      <description>二次构建  进一步优化我们的微前端性能
+ 在微前端这种形势的架构,每个模块都会输出固定的文件,比如之前说的:
+ 项目配置文件 Store.js 文件 main.js 渲染入口文件   这三个,是微前端架构中每个模块必要的三个文件.
+ 在模块加载器启动整个项目的时候,都必须要加载所有模块的配置文件与Store.js文件. 在前面的文章中有说 配置自动化的问题,这其实就是一种简单的二次构建. 虽然每一个模块的配置文件体积不是很大,但是每一个文件都会加载,是项目启动的必要文件. 每一个文件都会占一个http请求,每一个文件的阻塞都会影响项目的启动时间.
+所以,我们的Store.js也必须是要优化的. 当然如果我们的模块数量不是很多的话,我们没有优化的必要.但是一旦项目变得更加庞大,有好几十个模块. 我们不可能一次加载几十个文件,我们必须要在项目部署之后,还要对整个项目重新再次构建来优化与整合我们的项目.
+我们的Store.js 是一个amd模块,所以我们需要一个合并amd模块的工具.
+Grunt or Gulp 像这样的场景,用grunt,gulp这样的任务管理工具再合适不过了. 不管这两个工具好像已经是上个世纪的东西了,但是他的生态还是非常完善的.用在微前端的二次构建中非常合适.
+例如Gulp:
+const gulp = require(&#39;gulp&#39;); const concat = require(&#39;gulp-concat&#39;); gulp.task(&#39;storeConcat&#39;, function () { gulp.src(&#39;project/**/Store.js&#39;) .pipe(concat(&#39;Store.js&#39;)) //合并后的文件名 .pipe(gulp.dest(&#39;project/&#39;)); });  像这样的优化点还有非常多,在项目发布之后,在二次构建与优化代码. 在后期庞大的项目中,是有很多空间来提升我们项目的性能的.
+未完待续 &amp;hellip;
+相关文章 前端微服务化解决方案1 - 思考
+前端微服务化解决方案2 - Single-SPA
+前端微服务化解决方案3 - 模块加载器
+前端微服务化解决方案4 - 消息总线
+前端微服务化解决方案5 - 路由分发</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案7 - 静态数据共享</title>
+      <link>https://alili.tech/archive/5e00e43d/</link>
+      <pubDate>Thu, 06 Sep 2018 01:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/5e00e43d/</guid>
+      <description>在前面的一些介绍,相信你对微前端已经有了一个相对完整的认知. 下面介绍一下,再开发过程中我的一些小技巧与处理方法.
+动态入口 当有新的子模块会挂载到项目中的时候,在UI中肯定需要一个新的入口进入子模块的UI. 而这样一个入口,是需要动态生成的.
+例如:图中左边的菜单,不应该是代码写死的.而是根据每个模块提供的数据自动生成的.
+不然每次发布新的模块,我们都需要在最外面的这个框架修改代码.这样就谈不上什么独立部署了.
+静态数据共享 想要达到上面所的效果,我们可以这样做.
+// ~/common/menu.js import { isUrl } from &#39;../utils/utils&#39; let menuData = [ { name: &#39;模块1&#39;, icon: &#39;table&#39;, path: &#39;module1&#39;, rank: 1, children: [ { name: &#39;Page1&#39;, path: &#39;page1&#39;, }, { name: &#39;Page2&#39;, path: &#39;page2&#39;, }, { name: &#39;Page3&#39;, path: &#39;page3&#39;, }, ], } ] let originParentPath = &#39;/&#39; function formatter(data, parentPath = originParentPath, parentAuthority) { ... } // 在这里,我们对外导出 这个模块的菜单数据 export default menuData  // Store.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案6 - 构建与部署</title>
+      <link>https://alili.tech/archive/ffb0c5ab/</link>
+      <pubDate>Wed, 05 Sep 2018 01:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/ffb0c5ab/</guid>
+      <description>微前端打包构建 微前端项目的打包,是有一些需要注意的点 以webpack为例:
+amd模块 在之前的文章,我们有提到我们的加载器,是基于System.js来做的. 所以我们微前端的模块最终打包,是要符合模块规范的. 我们使用的是amd模块规范来构建我们的模块.
+指定基础路径 因为模块打包后,调用模块出口文件的,是模块加载器. 为了清晰的管理每个模块,并且正确的加载到我们每一个模块的资源, 我们给模块的资源都指定一个publicPath.
+ 下面给出一个简单的 webpack 配置,这些配置我只是列出一些必要选项. 并不是一个完整的webpack配置,后续我会提供完整的微前端的Demo,提供大家参考 这些配置都是基于 create-react-app 的配置做的修改. 只要明白了配置的意图,明白我们打包出来的最终是一个什么样的包, 不管打包工具以后怎么变,技术栈怎么变,最后都是可以对接到微前端中来.
+ 这里给出 project.json 的内容,便于后面的配置文件的阅读
+// project.json { &amp;quot;name&amp;quot;: &amp;quot;name&amp;quot;, //模块名称 &amp;quot;path&amp;quot;: &amp;quot;/project&amp;quot;, //模块url前缀 &amp;quot;prefix&amp;quot;: &amp;quot;/module-prefix/&amp;quot;, //模块文件路径前缀 &amp;quot;main&amp;quot;: &amp;quot;/module-prefix/main.js&amp;quot;, //模块渲染出口文件 &amp;quot;store&amp;quot;: &amp;quot;/module-prefix/store.js&amp;quot;,//模块对外接口 &amp;quot;base&amp;quot;: true // 是否为baseapp }  // 引入项目配置文件,也是前面说的 模块加载器必要文件之一 const projectConfig = require(&#39;./project.json&#39;) let config = { entry: { main: paths.appIndexJs, //出口文件,模块加载器必要文件之一 store: paths.store // 对外api的reducer文件,模块加载器必要文件之一 }, output: { path: paths.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案5 - 路由分发</title>
+      <link>https://alili.tech/archive/5ff0b366/</link>
+      <pubDate>Tue, 04 Sep 2018 01:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/5ff0b366/</guid>
+      <description>路由分发式微前端 从应用分发路由到路由分发应用 用这句话来解释,微前端的路由,再合适不过来.
+ 路由分发式微前端，即通过路由将不同的业务分发到不同的、独立前端应用上。其通常可以通过 HTTP 服务器的反向代理来实现，又或者是应用框架自带的路由来解决。 就当前而言，通过路由分发式的微前端架构应该是采用最多、最易采用的 “微前端” 方案。但是这种方式看上去更像是多个前端应用的聚合，即我们只是将这些不同的前端应用拼凑到一起，使他们看起来像是一个完整的整体。但是它们并不是，每次用户从 A 应用到 B 应用的时候，往往需要刷新一下页面。 &amp;ndash; 引用自phodal 微前端的那些事儿
+ 在模块加载器那一章的示例代码,已经非常充分了展示了路由分发应用的步骤.
+在单页面前端的路由,目前有两种形式, 一种是所有主流浏览器都兼容多hash路由, 基本原理为url的hash值的改变,触发了浏览器onhashchange事件,来触发组件的更新
+还有一种是高级浏览器才支持的 History API, 在 window.history.pushState(null, null, &amp;quot;/profile/&amp;quot;);的时候触发组件的更新
+// hash 模式,项目路由用的是hash模式会用到该函数 export function hashPrefix(app) { return function (location) { let isShow = false //如果该应用 有多个需要匹配的路劲 if(isArray(app.path)){ app.path.forEach(path =&amp;gt; { if(location.hash.startsWith(`#${path}`)){ isShow = true } }); } // 普通情况 else if(location.hash.startsWith(`#${app.path || app.url}`)){ isShow = true } return isShow; } } // pushState 模式 export function pathPrefix(app) { return function (location) { let isShow = false //如果该模块 有多个需要匹配的路径 if(isArray(app.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案4 - 消息总线</title>
+      <link>https://alili.tech/archive/a9a1f81b/</link>
+      <pubDate>Mon, 03 Sep 2018 01:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/a9a1f81b/</guid>
+      <description>微前端的消息总线,主要的功能是搭建模块与模块之间通讯的桥梁.
+ 黑盒子 问题1: 应用微服务化之后,每一个单独的模块都是一个黑盒子, 里面发生了什么,状态改变了什么,外面的模块是无从得知的. 比如模块A想要根据模块B的某一个内部状态进行下一步行为的时候,黑盒子之间没有办法通信.这是一个大麻烦.
+问题2 每一个模块之间都是有生命周期的.当模块被卸载的时候,如何才能保持后续的正常的通信?
+ ps. 我们必须要解决这些问题,模块与模块之间的通讯太有必要了.
+ 打破壁垒 在github上single-spa-portal-example,给出来一解决方案.
+基于Redux实现前端微服务的消息总线(不会影响在编写代码的时候使用其他的状态管理工具).
+大概思路是这样的: 每一个模块,会对外提供一个 Store.js.
+这个文件里面的内容,大致是这样的.
+import { createStore, combineReducers } from &#39;redux&#39; const initialState = { refresh: 0 } function render(state = initialState, action) { switch (action.type) { case &#39;REFRESH&#39;: return { ...state, refresh: state.refresh + 1 } default: return state } } // 向外输出 Store export const storeInstance = createStore(combineReducers({ namespace: () =&amp;gt; &#39;base&#39;, render }))  对于这样的代码,有没有很熟悉?</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案3 - 模块加载器</title>
+      <link>https://alili.tech/archive/1a60cede/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/1a60cede/</guid>
+      <description>微前端的模块加载器,主要功能为: * 项目配置文件的加载 * 项目对外接口文件的加载(消息总线会用到,后续会提) * 项目入口文件的加载
+ 以上也是每一个单模块,不可缺少的三部分
+ 配置文件 我们实践微前端的过程中,我们对每个模块项目,都有一个对外的配置文件. 是模块在注册到singe-spa时候所用到的信息.
+{ &amp;quot;name&amp;quot;: &amp;quot;name&amp;quot;, //模块名称 &amp;quot;path&amp;quot;: &amp;quot;/project&amp;quot;, //模块url前缀 &amp;quot;prefix&amp;quot;: &amp;quot;/module-prefix/&amp;quot;, //模块文件路径前缀 &amp;quot;main&amp;quot;: &amp;quot;/module-prefix/main.js&amp;quot;, //模块渲染出口文件 &amp;quot;store&amp;quot;: &amp;quot;/module-prefix/store.js&amp;quot;,//模块对外接口 &amp;quot;base&amp;quot;: true // 当模块被定性为baseApp的时候, // 不管url怎么变化,项目也是会被渲染的, // 使用场景为,模块职责主要为整个框架的布局或者一直被渲染,不会改变的部分 }  当我们的模块,有多种url前缀的时候,path也可以为数组形式
+{ &amp;quot;path&amp;quot;: [&amp;quot;/project-url-path1/&amp;quot;,&amp;quot;/project-url-path2/&amp;quot;], //项目url前缀 }  配置自动化 我们每个模块都有上面所描述的配置文件,当我们的项目多个模块的时候,我们需要把所有模块的配置文件聚合起来. 我这里也有写一个脚本.
+micro-auto-config
+使用方法:
+npm install micro-auto-config -g # 在项目根目录,用pm2启动该脚本,便可启动这个项目的配置自动化 pm2 start micro-auto-config   大概思路是:当模块部署,服务器检测到项目文件发生改变,便开始找出所有模块的配置文件,把他们合并到一起. 以数组包对象的形式输出一个总体的新配置文件 project.config.js. 当我们一个模块配置有更新,部署到线上的时候,项目配置文件会自动更新.
+ 模块加载器 这个文件直接引入到html中,也就是上一篇文章中的single-spa-config.js 升级版. 在加载模块的时候,我们使用SystemJS作为我们的模块加载工具.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案2 - Single-SPA</title>
+      <link>https://alili.tech/archive/11052bf4/</link>
+      <pubDate>Sun, 02 Sep 2018 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/11052bf4/</guid>
+      <description>技术选型 经过各种技术调研我们最终选择的方案是基于 Single-SPA 来实现我们的前端微服务化.
+你的浏览器不支持视频  Single-SPA  一个用于前端微服务化的JavaScript前端解决方案
+ 使用Single-SPA之后,你可以这样做:
+ (兼容各种技术栈)在同一个页面中使用多种技术框架(React, Vue, AngularJS, Angular, Ember等任意技术框架),并且不需要刷新页面. (无需重构现有代码)使用新的技术框架编写代码,现有项目中的代码无需重构. (更优的性能)每个独立模块的代码可做到按需加载,不浪费额外资源. 每个独立模块可独立运行.  下面是一个微前端的演示页面 (你可能需要科学的上网) https://single-spa.surge.sh/ &amp;gt; 以上是官方例子,但是官方例子中并没有解决一个问题.就是各种技术栈的路由实现方式大相径庭,如何做到路由之间的协同? 后续文章会讲解,如何解决这样的问题.
+单体应用对比前端微服务化 普通的前端单体应用 微前端架构 Single-SPA的简单用法 1.创建一个HTML文件 &amp;lt;html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;root&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script src=&amp;quot;single-spa-config.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  2.创建single-spa-config.js 文件 // single-spa-config.js import * as singleSpa from &#39;single-spa&#39;; // 加载react 项目的入口js文件 (模块加载) const loadingFunction = () =&amp;gt; import(&#39;./react/app.js&#39;); // 当url前缀为 /react的时候.返回 true (底层路由) const activityFunction = location =&amp;gt; location.</description>
+    </item>
+    
+    <item>
+      <title>前端微服务化解决方案1 - 思考</title>
+      <link>https://alili.tech/archive/ea599f7c/</link>
+      <pubDate>Sat, 01 Sep 2018 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/ea599f7c/</guid>
+      <description>近几年,微服务架构在后端技术社区大红大紫,它被认为是IT软件架构的未来技术方向.我们如何借鉴后端微服务的思想来构建一个现代化前端应用? 在这里我提供一个可以在产品中真正可以落地的前端微服务解决方案.
+ 微服务化后端前后端对比 后端微服务化的优势:  复杂度可控: 体积小、复杂度低，每个微服务可由一个小规模开发团队完全掌控，易于保持高可维护性和开发效率。 独立部署: 由于微服务具备独立的运行进程，所以每个微服务也可以独立部署。 技术选型灵活: 微服务架构下，技术选型是去中心化的。每个团队可以根据自身服务的需求和行业发展的现状，自由选择最适合的技术栈。 容错: 当某一组建发生故障时，在单一进程的传统架构下，故障很有可能在进程内扩散，形成应用全局性的不可用。 扩展: 单块架构应用也可以实现横向扩展，就是将整个应用完整的复制到不同的节点。  前端微服务化后的优势:  复杂度可控: 每一个UI业务模块由独立的前端团队开发,避免代码巨无霸,保持开发时的高速编译,保持较低的复杂度,便于维护与开发效率。 独立部署: 每一个模块可单独部署,颗粒度可小到单个组件的UI独立部署,不对其他模块有任何影响。 技术选型灵活: 也是最具吸引力的,在同一项目下可以使用如今市面上所有前端技术栈,也包括未来的前端技术栈。 容错: 单个模块发生错误,不影响全局。 扩展: 每一个服务可以独立横向扩展以满足业务伸缩性，与资源的不必要消耗；  我们何时需要前端微服务化?  项目技术栈过于老旧,相关技能的开发人员少,功能扩展吃力,重构成本高,维护成本高. 项目过于庞大,代码编译慢,开发体差,需要一种更高维度的解耦方案. 单一技术栈无法满足你的业务需求  其中面临的问题与挑战 我们即将面临以下问题:
+ 我们如何实现在一个页面里渲染多种技术栈? 不同技术栈的独立模块之间如何通讯? 如何通过路由渲染到正确的模块? 在不同技术栈之间的路由该如何正确触发? 项目代码别切割之后,通过何种方式合并到一起? 我们的每一个模块项目如何打包? 前端微服务化后我们该如何编写我们的代码? 独立团队之间该如何协作?   后续的文章我会一一解答以上问题,一起挖掘前端微服务的潜力. 跳出概念,实实在在的落地到你的项目中. 未完待续 &amp;hellip;
+ 相关文章 前端微服务化解决方案1 - 思考
+前端微服务化解决方案2 - Single-SPA
+前端微服务化解决方案3 - 模块加载器
+前端微服务化解决方案4 - 消息总线
+前端微服务化解决方案5 - 路由分发</description>
+    </item>
+    
+  </channel>
+</rss>
