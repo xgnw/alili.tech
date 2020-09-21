@@ -23,6 +23,10 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
+    "url": "archive/Math/demo.js",
+    "revision": "a2952a4185611f27ad515b725e4c3117"
+  },
+  {
     "url": "css/style.css",
     "revision": "57baaf7cbee6e71c5d72b166350806ac"
   },
