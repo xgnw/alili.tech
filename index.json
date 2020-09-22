@@ -1,7 +1,13 @@
 [
     {
+        "uri": "https://alili.tech/archive/6mchh1x7mrv/",
+        "title": "数学篇 - 概率之随机变量与分布(笔记)",
+        "tags": ["Daily", "数学"],
+        "description": ""
+    },
+    {
         "uri": "https://alili.tech/archive/5g1oligl91/",
-        "title": "数学篇 - 树的深度优先搜索(笔记)",
+        "title": "数学篇 - 树的深度优先搜索与广度优先搜索(笔记)",
         "tags": ["Daily", "数学"],
         "description": ""
     },

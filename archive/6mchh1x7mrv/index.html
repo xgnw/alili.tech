@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hugo 0.51"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="HandheldFriendly" content="True"><meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="wap-font-scale" content="no"><meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34"><meta name="sogou_site_verification" content="E8uWFBcf4a"><meta name="author" content="Fan"><meta name="description" itemprop="description" content="随机变量（ random variable )  设随机试验的样本空间为S SS，X = X ( e ) X=X(e)X=X(e)是定义在样本空间S SS上的实值单值函数。称X = X ( e ) X=X(e)X=X(e)为随机变量。 本质是关于基本事件的函数，自变量是基本事件，因变量是函数值。  随机试验： 满足: * (1)可重复性:试验在相同条件下可重复进行； * (2)可知性:每次试验的可"><meta name="keywords" content="人工智能,计算机数学,计算机基础,计算机,前端学人工智能,每日功课"><meta property="og:locale" content="en_US"><meta property="og:title" content="数学篇 - 概率之随机变量与分布(笔记)"><meta property="og:image" content="https://alili.tech/images/logo2.png"><meta property="og:description" content="随机变量（ random variable )  设随机试验的样本空间为S SS，X = X ( e ) X=X(e)X=X(e)是定义在样本空间S SS上的实值单值函数。称X = X ( e ) X=X(e)X=X(e)为随机变量。 本质是关于基本事件的函数，自变量是基本事件，因变量是函数值。  随机试验： 满足: * (1)可重复性:试验在相同条件下可重复进行； * (2)可知性:每次试验的可"><meta property="og:site_name" content="Hello Alili"><title>数学篇 - 概率之随机变量与分布(笔记) | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title><link rel="shortcut icon" href="https://alili.tech/images/favicon.ico"><link rel="manifest" href="/manifest.json"><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"><link href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/css/justifiedGallery.min.css" rel="stylesheet"><link rel="preload" href="https://alili.tech/css/style.css" as="style"><link rel="stylesheet" href="https://alili.tech/css/style.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script>document.addEventListener("error", function (e) {
+			  var elem = e.target;
+			  if (elem.tagName.toLowerCase() == 'img') {
+				elem.style.display='none'
+			  }
+			}, true);</script></head><body><div id="header-post"><a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a> <span id="menu"><span id="nav"><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></span><br><span id="actions"><ul><li><a class="icon" href="https://alili.tech/archive/5g1oligl91/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li><li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li><li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li></ul><span id="i-prev" class="info" style="display:none;">Previous post</span> <span id="i-next" class="info" style="display:none;">Next post</span> <span id="i-top" class="info" style="display:none;">Back to top</span> <span id="i-share" class="info" style="display:none;">Share post</span></span><br><div id="share" style="display: none"><ul><li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&text=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-weibo" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f"><i class="fa fa-facebook" aria-hidden="true"></i></a></li><li><a class="icon" href="https://twitter.com/share?url=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&text=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&is_video=false&description=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li><li><a class="icon" href="mailto:?subject=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29&body=Check out this article: https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f"><i class="fa fa-envelope" aria-hidden="true"></i></a></li><li><a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li><li><a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-reddit" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li><li><a class="icon" href="http://digg.com/submit?url=https%3a%2f%2falili.tech%2farchive%2f6mchh1x7mrv%2f&title=%e6%95%b0%e5%ad%a6%e7%af%87%20-%20%e6%a6%82%e7%8e%87%e4%b9%8b%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e4%b8%8e%e5%88%86%e5%b8%83%28%e7%ac%94%e8%ae%b0%29"><i class="fa fa-digg" aria-hidden="true"></i></a></li></ul></div><div id="toc"><nav id="TableOfContents"><ul><li><ul><li><a href="#随机变量-random-variable">随机变量（ random variable )</a><ul><li><a href="#随机试验">随机试验：</a></li><li><a href="#样本空间">样本空间：</a></li><li><a href="#样本和随机变量">样本和随机变量:</a></li></ul></li><li><a href="#概率分布">概率分布</a><ul><li><a href="#使用代码来尝试">使用代码来尝试</a></li></ul></li><li><a href="#离散分布模型">离散分布模型</a><ul><li><a href="#伯努利分布-bernoulli-distribution">伯努利分布（Bernoulli Distribution）</a></li></ul></li><li><a href="#分类分布-categorical-distribution-也叫-multinoulli-分布">分类分布（Categorical Distribution）也叫 Multinoulli 分布</a></li><li><a href="#正态分布-normal-distribution">正态分布（Normal Distribution）</a></li></ul></li></ul></nav></div></span></div><div class="content index width mx-auto px3 my3"><section id="wrapper" class="home"><article class="post" itemscope itemtype="http://schema.org/BlogPosting"><header><h1 class="posttitle" itemprop="name headline">数学篇 - 概率之随机变量与分布(笔记)</h1><div class="meta"><div class="postdate"><time datetime="2020-09-13" itemprop="datePublished">2020-09-13</time></div><div class="article-tag"><i class="fa fa-eye"></i> <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span></span></div><div class="article-tag"><i class="fa fa-tag"></i> <a href="/tags/daily">Daily</a> <a href="/tags/%E6%95%B0%E5%AD%A6">数学</a></div><div class="article-tag-box"></div></div></header><div class="content" itemprop="articleBody"><h2 id="随机变量-random-variable">随机变量（ random variable )</h2><ul><li>设随机试验的样本空间为S SS，X = X ( e ) X=X(e)X=X(e)是定义在样本空间S SS上的实值单值函数。称X = X ( e ) X=X(e)X=X(e)为随机变量。</li><li>本质是关于基本事件的函数，自变量是基本事件，因变量是函数值。</li></ul><h3 id="随机试验">随机试验：</h3><p>满足: * (1)可重复性:试验在相同条件下可重复进行； * (2)可知性:每次试验的可能结果不止一个，并且事先能明确试验所有可能的结果； * (3)不确定性:进行一次试验之前不能确定哪一个结果会出现，但必然会出现结果中的一个。</p><h3 id="样本空间">样本空间：</h3><p>随机试验的所有基本结果组成的集合称为样本空间。样本空间的元素称为样本点或基本事件。即样本空间本质是一个集合，每一个元素都是一次随机试验的结果。</p><h3 id="样本和随机变量">样本和随机变量:</h3><p>数理统计里的样本具有二重性，即样本既可以看作是一组观测值又可以看作是随机变量。</p><ul><li>第一，在抽样之前。无法确定样本的观测值，所以可以看成是随机变量。</li><li>第二，样本在抽取以后，经观测，样本抽有了具体的观测值，故又可以看成是一组确定的值。</li></ul><h2 id="概率分布">概率分布</h2><p>我们拿最简单的抛硬币事件来看。从理论上说来，出现正面和反面的概率都是 50%</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/37ad586a7450df254377069cf6cb942221abec1888d7f4479f847d9052399caf.png" alt="图 2"></p><h3 id="使用代码来尝试">使用代码来尝试</h3><pre><code class="language-js">
+function flipCoin(){
+    for (let index = 0; index &lt; 10; index++) {
+        // 对随机数四舍五入
+        let randomNum = Math.round(Math.random())
+        // 随机为1则为正面
+        if(randomNum === 1){
+            console.log('正面')
+        }else{
+            console.log('反面')
+        }
+    }
+
+}
+
+flipCoin()
+
+</code></pre><p>尝试10次结果:</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/ae33d052a617115dd55e6ba4b518174d2e32882ca4d0011ef8c14d882906ca4a.png" alt="图 3"></p><p>尝试1000次</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/ded88ad6ca997dbfbf9424b9b83159d1d16b329611da5902fc2734b219c16362.png" alt="图 4"></p><ul><li><p>统计的采样次数越多，越趋近于我们理论上的情况</p></li><li><p>概率分布描述的其实就是随机变量的概率规律。</p></li></ul><h2 id="离散分布模型">离散分布模型</h2><h3 id="伯努利分布-bernoulli-distribution">伯努利分布（Bernoulli Distribution）</h3><p>这是单个随机变量的分布，而且这个变量的取值只有两个，0 或 1。</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/857fa1c74e576b0da786c1426090e02a008172a9f3cd01d867c7a7f3580ff1b2.png" alt="图 5"></p><p>或者</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/f5945b9cf937d09adbb61ff6eb44493efc82170ec4ac1d82210d972555a63f81.png" alt="图 6"></p><pre><code>举例子:
+
+假设你要生孩子，生男孩子概率p，生女孩纸概率1-p
+
+伯努利实验：生一次孩子
+
+伯努利分布：生一次孩子，生男孩子概率为p,生女孩纸概率1-p，这个就是伯努利分布
+</code></pre><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/4dd3a2264061010d7c4a332050cccb1549fe594a97676c3f9d2305c1e44a97ad.png" alt="图 7"></p><h2 id="分类分布-categorical-distribution-也叫-multinoulli-分布">分类分布（Categorical Distribution）也叫 Multinoulli 分布</h2><p>它描述了一个具有 k 个不同状态的单个随机变量。这里的 k，是有限的数值，如果 k 为 2 的时候，那么分类分布就变成了伯努利分布。我把这个分布的公式和图解都列了出来。</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/fb55f261b37f0963c7c89e2ed67e11132897839b9335bda7c0a150c531929a84.png" alt="图 8"></p><h2 id="正态分布-normal-distribution">正态分布（Normal Distribution）</h2><p>公式: <img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/6dc708e463f8c158c107510d1b735dd6b2bb94bfa3f670474a090ad9b38b6e00.png" alt="图 9"></p><p>在这个公式中有两个参数，μ表示均值，σ表示方差。</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/f717b791257809f884e53ec6bba6edd51b48f2bec8509cba5ea9fe5b25a81759.png" alt="图 10"></p><h2>微信公众号</h2><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/c2a91cfb597826a4b02b755746c300e00cc7728a9f5bac20bec538e8c76a443f.png"><h2>本文链接：</h2><a href="https://alili.tech/archive/6mchh1x7mrv/" target="_blank">https://alili.tech/archive/6mchh1x7mrv/</a></div></article><script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><div class="blog-post-comments"></div><script>new Valine({
+        el: '.blog-post-comments', 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', 
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', 
+        placeholder: '说点什么? 证明你来过~', 
+        avatar:'robohash',
+        notify:true,
+        verify:true
+    });</script><h1># 最新文章</h1><ul id="more-post-list" class="archive readmore"><li><a href="/archive/5g1oligl91/">数学篇 - 树的深度优先搜索与广度优先搜索(笔记)<aside class="dates">2020-09-11</aside></a></li><li><a href="/archive/rakfaq9whbo/">数学篇 - 树的概念(笔记)<aside class="dates">2020-09-10</aside></a></li><li><a href="/archive/nfo3tlig7y/">数学篇 - 动态规划,编辑距离的计算(笔记)<aside class="dates">2020-09-09</aside></a></li><li><a href="/archive/yraotmb3ot/">数学篇 - 组合,解决赛程规划与自然语言处理(笔记)<aside class="dates">2020-09-08</aside></a></li><li><a href="/archive/9kfvaensryf/">数学篇 - 排列,解决田忌赛马与密码爆破问题(笔记)<aside class="dates">2020-09-07</aside></a></li><li><a href="/archive/zr4ve5abfzg/">数学篇 - 递归,分而治之，从归并排序到MapReduce(笔记)<aside class="dates">2020-09-06</aside></a></li><li><a href="/archive/ru7lce72gge/">数学篇 - 递归,复杂问题分解(笔记)<aside class="dates">2020-09-05</aside></a></li><li><a href="/archive/fexppeuk3m/">数学篇 - 数学归纳法,给计算机注入灵魂(笔记)<aside class="dates">2020-09-04</aside></a></li><li><a href="/archive/35dkyj5swxr/">数学篇 - 迭代法,让每次计算都更接近真像(笔记)<aside class="dates">2020-09-03</aside></a></li><li><a href="/archive/jvh7xaof84/">数学篇 - 余数与哈希函数(笔记)<aside class="dates">2020-09-02</aside></a></li></ul></section></div><footer id="footer"><div class="footer-left">Copyright © 2020 Fan <a href="https://beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号</a></div><div class="footer-right"><nav><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></nav></div></footer><script src="https://alili.tech/lib/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/js/jquery.justifiedGallery.min.js"></script><script src="https://alili.tech/js/main.js"></script><script async src=""></script><script>(function(){
+  if(location.host!=='alili.tech')return;
+  var ga = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=UA-129382678-1';       
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(ga, s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129382678-1');
+})()</script><script>(function(){
+    if(location.host!=='alili.tech')return;
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+          navigator.serviceWorker
+              .register('/sw.js')
+              .then(registration => {
+                  
+              })
+              .catch(registrationError => {
+                  console.log('SW registration failed: ', registrationError);
+              });
+      });
+  }</script><script>var _mtac = {};
+  (function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500643908");
+    mta.setAttribute("cid", "500649335");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+  })();</script></body></html>

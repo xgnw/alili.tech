@@ -23,8 +23,12 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "archive/Math/demo.js",
-    "revision": "a2952a4185611f27ad515b725e4c3117"
+    "url": "archive/Math/11.demo.js",
+    "revision": "db38ed8eae59a815dba88a3da2ddbd20"
+  },
+  {
+    "url": "archive/Math/12.数学篇 - 概率之随机变量与分布.js",
+    "revision": "d42ac44d02aafcf6179fcf2b0b5cc204"
   },
   {
     "url": "css/style.css",

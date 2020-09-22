@@ -78,3 +78,18 @@ function dfsByStack( root) {
     }
     }
   }  
+
+
+  bfs(root.sons)
+function bfs(queue){
+    if(queue.length === 0){console.log('结束了');return;}
+    let tmpQueue = []
+    for (let index = 0; index < queue.length; index++) {
+        const element = queue[index];
+        console.log(element.key)
+        if(element.sons && element.sons.length){
+            tmpQueue.push(...element.sons)
+        }
+    }
+    bfs(tmpQueue)
+}
