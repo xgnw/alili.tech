@@ -6,7 +6,7 @@
     <description>Recent content in Daily on Hello Alili</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 13 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://alili.tech/tags/daily/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>数学篇 - 概率之随机变量与分布(笔记)</title>
       <link>https://alili.tech/archive/6mchh1x7mrv/</link>
-      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://alili.tech/archive/6mchh1x7mrv/</guid>
       <description>随机变量（ random variable )  设随机试验的样本空间为S SS，X = X ( e ) X=X(e)X=X(e)是定义在样本空间S SS上的实值单值函数。称X = X ( e ) X=X(e)X=X(e)为随机变量。 本质是关于基本事件的函数，自变量是基本事件，因变量是函数值。  随机试验： 满足: * (1)可重复性:试验在相同条件下可重复进行； * (2)可知性:每次试验的可能结果不止一个，并且事先能明确试验所有可能的结果； * (3)不确定性:进行一次试验之前不能确定哪一个结果会出现，但必然会出现结果中的一个。
