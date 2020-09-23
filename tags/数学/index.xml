@@ -6,10 +6,34 @@
     <description>Recent content in 数学 on Hello Alili</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 12 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://alili.tech/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数学篇 - 概率之联合概率、条件概率、边缘概率和贝叶斯法则(笔记)</title>
+      <link>https://alili.tech/archive/haz1cu03hf/</link>
+      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/haz1cu03hf/</guid>
+      <description>公式符号解释: P(A|B).是B已知下的A的条件概率
+ 联合概率（Joint Probability） 各种解释描述,便于理解:
+ 联合概率指的是包含多个条件且所有条件同时成立的概率，记作P(X=a,Y=b)或P(a,b)，有的书上也习惯记作P(ab)，但是这种记法个人不太习惯，所以下文采用以逗号分隔的记法。一定要注意是所有条件同时成立！
+ 两个以上事件的交集的概率
+   例子：从一副扑克牌中抽出一张红色的4的概率为P(红4) = 2&amp;frasl;52 = 1/26。（一副扑克牌有52张牌，想抽到的是红心4和方块4）。
+ 条件概率（Conditional Probability）  条件概率是已知某（些）事件已经发生的前提下，另一（些）事件发生的概率。已知事件B已经发生时，事件A发生的条件概率写作P(A|B)。
+ 条件概率表示在条件Y=b成立的情况下，X=a的概率，记作P(X=a|Y=b)或P(a|b)，
+   例子：已知我们抽到了一张红色的牌，这张牌是4的概率为P(4|红) = 2&amp;frasl;26 = 1&amp;frasl;13 （一副扑克牌有52张牌，26张红色的，26张黑色的。现在因为我们已经抽到了一张红色的牌，我们知道我们抽取的范围是26张牌，因此第一个除数是26）。
+ 联合概率与条件概率的区别 解释1: P(AB) 联合概率：池子没变。
+P(A|B) 条件概率：池子变小了！！！！！！
+所以如果用条件概率来算联合概率的话：池子不能小，给我乘回去！！！！
+P(A|B) x P(B) = P(AB)
+解释2: 当我们想要知道抽到一张红色的4的扑克牌的概率（红色和4的联合概率）时，我想让你想象一下，把所有52张牌面朝下放置，然后随机选中一张。在这52张牌中，有2张是红色的，同时数字是4（红心4和方块4）。所以联合概率是2/52 = 1/26。
+而当我们想要知道已知抽中的牌是红色的时候，抽中数字是4的牌的概率，即条件概率P(4|红)时，我想让你再想象一下有52张牌。不过，在随机抽取一张牌之前，你给所有扑克牌排了个序，选中了所有26张红色的牌。现在你把这26张牌面朝下放置，然后随机选择一张牌。同样，这些红色的牌中有两张数字为4，所以条件概率是2/26 = 1&amp;frasl;13
+公式描述 边缘概率 解释:
+ 对于离散型随机变量，我们可以通过通过联合概率 P(x, y) 在 y 上求和，就可以得到 P(x)。对于连续型随机变量，我们可以通过联合概率 P(x, y) 在 y 上的积分(无限求和)，推导出概率 P(x)。这个时候，我们称 P(x) 为边缘概率。</description>
+    </item>
     
     <item>
       <title>数学篇 - 概率之随机变量与分布(笔记)</title>
