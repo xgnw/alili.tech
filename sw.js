@@ -32,7 +32,7 @@ self.__precacheManifest = [
   },
   {
     "url": "css/style.css",
-    "revision": "57baaf7cbee6e71c5d72b166350806ac"
+    "revision": "7b9a87b7423adc0a83cd82228181c2d4"
   },
   {
     "url": "js/av-min.js",
