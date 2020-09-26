@@ -95,7 +95,11 @@ Taro跨端开发之依赖管理
       <pubDate>Thu, 20 Aug 2020 22:17:36 +0000</pubDate>
       
       <guid>https://alili.tech/archive/h8gasmt9u5c/</guid>
-      <description>长期迭代的项目稳定问题 我们在开发周期比较长的前端项目的时候,必然会遇到依赖管理的问题.
+      <description>业务情况 目前我们有好几个孪生Taro应用,孪生Taro应用之间会有多个相同的业务模块.
+为了更加方便的构建我们的应用,我们把所有的业务模块抽离,等到构建的时候再将其进行组装.
+我们为了更好的开发,每一个业务模块都是可以独立开发,独立运行的,可以不依赖主工程.
+所以我们每一个工程的npm依赖就必须要保持高度的统一了.
+依赖不一致会导致长期迭代的项目稳定问题 我们在开发周期比较长的前端项目的时候,必然会遇到依赖管理的问题.
 我们在开发项目的时候,我们用了大量的三方库.这些三方的依赖库时不时的会更新自己的代码.
 第三方依赖库的代码更新会很容易造成代码运行的不稳定,
 比如昨天还跑的好好的项目,另一位刚刚接手的同学重新安装依赖之后项目就完全跑不起来了.
@@ -127,7 +131,7 @@ resolutions 字段用于解析选择性版本，可以通过此功能自定义�
 这样npm就会将多版本共存的版本,强行指定某一版本,满足个别项目的特定需求.
 如果我要所有的 B 强行指定2.0
 使用方法如下:
-// package.json // 这样B这个依赖库,就被强行指定版本了 { &amp;quot;resolutions&amp;quot;: { &amp;quot;B&amp;quot;: &amp;quot;2.0.0&amp;quot; } }  resolutions的解释,你可以在这里查看更多:</description>
+// package.json // 这样B这个依赖库,就被强行指定版本了 { &amp;quot;resolutions&amp;quot;: { &amp;quot;B&amp;quot;: &amp;quot;2.</description>
     </item>
     
     <item>
