@@ -6,10 +6,21 @@
     <description>Recent content in Mac on Hello Alili</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 04 Nov 2018 22:30:05 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2020 22:30:05 +0000</lastBuildDate>
     
 	<atom:link href="https://alili.tech/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mac系统如何关掉Chrome的跨域限制</title>
+      <link>https://alili.tech/archive/a8e3f4c2/</link>
+      <pubDate>Wed, 16 Sep 2020 22:30:05 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/a8e3f4c2/</guid>
+      <description>因为调试经常需要Chrome关掉跨域限制,网上的方法大多是windows的,
+这里今天记录一下:
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir=&amp;quot;/tmp/chrome_dev_test&amp;quot; --disable-web-security  </description>
+    </item>
     
     <item>
       <title>升级Mac 10.14 mojave后辅助功能空白无法添加问题</title>
