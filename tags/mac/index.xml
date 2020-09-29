@@ -12,26 +12,26 @@
     
     
     <item>
-      <title>Mac系统如何关掉Chrome的跨域限制</title>
-      <link>https://alili.tech/archive/leqgfwbuko/</link>
-      <pubDate>Thu, 17 Sep 2020 22:30:05 +0000</pubDate>
-      
-      <guid>https://alili.tech/archive/leqgfwbuko/</guid>
-      <description> 关掉Chrome 跨域限制 因为调试经常需要Chrome关掉跨域限制,网上的方法大多是windows的,
-这里今天记录一下:
-open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \ --args --user-data-dir=&amp;quot;/tmp/chrome_dev_test&amp;quot; --disable-web-security  </description>
-    </item>
-    
-    <item>
       <title>Mac系统开启Chrome 跟 Edge的网页强制暗黑模式</title>
       <link>https://alili.tech/archive/xewn7qbng4a/</link>
-      <pubDate>Wed, 16 Sep 2020 22:30:05 +0000</pubDate>
+      <pubDate>Thu, 17 Sep 2020 22:30:05 +0000</pubDate>
       
       <guid>https://alili.tech/archive/xewn7qbng4a/</guid>
       <description>开启强制暗黑模式 Chrome 进入浏览器,地址栏输入:
 chrome://flags/#enable-force-dark  Edge 进入浏览器,地址栏输入:
 edge://flags/#enable-force-dark  操作 将第一项 Disabled 改成 Enabled,然后重启浏览器
 生效:</description>
+    </item>
+    
+    <item>
+      <title>Mac系统如何关掉Chrome的跨域限制</title>
+      <link>https://alili.tech/archive/leqgfwbuko/</link>
+      <pubDate>Wed, 16 Sep 2020 22:30:05 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/leqgfwbuko/</guid>
+      <description> 关掉Chrome 跨域限制 因为调试经常需要Chrome关掉跨域限制,网上的方法大多是windows的,
+这里今天记录一下:
+open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \ --args --user-data-dir=&amp;quot;/tmp/chrome_dev_test&amp;quot; --disable-web-security  </description>
     </item>
     
     <item>
