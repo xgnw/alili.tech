@@ -13,10 +13,10 @@
     
     <item>
       <title>TensorFlow中的Tensor是什么?</title>
-      <link>https://alili.tech/archive/97enyq3a3m/</link>
+      <link>https://alili.tech/archive/eujpibnlnp8/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://alili.tech/archive/97enyq3a3m/</guid>
+      <guid>https://alili.tech/archive/eujpibnlnp8/</guid>
       <description>Tensor(张量) “张量”一词最初由威廉·罗恩·哈密顿在1846年引入。对，就是那个发明四元数的哈密顿：
  Tensor实际上就是一个多维数组（multidimensional array）
  Tensor的目的是能够创造更高维度的矩阵、向量。

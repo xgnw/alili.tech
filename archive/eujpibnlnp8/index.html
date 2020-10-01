@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hugo 0.51"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="HandheldFriendly" content="True"><meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="wap-font-scale" content="no"><meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34"><meta name="sogou_site_verification" content="E8uWFBcf4a"><meta name="author" content="Fan"><meta name="description" itemprop="description" content="Tensor(张量) “张量”一词最初由威廉·罗恩·哈密顿在1846年引入。对，就是那个发明四元数的哈密顿：
+ Tensor实际上就是一个多维数组（multidimensional array）
+ Tensor的目的是能够创造更高维度的矩阵、向量。
+  色彩的例子 彩色图像文件（RGB）一般都会处理成3-d tensor，每个2d array中的element表示一个像素，R代表Red，G代表Gr"><meta name="keywords" content="人工智能,计算机数学,计算机基础,计算机,前端学人工智能,每日功课"><meta property="og:locale" content="en_US"><meta property="og:title" content="TensorFlow中的Tensor是什么?"><meta property="og:image" content="https://alili.tech/images/logo.png"><meta property="og:description" content="Tensor(张量) “张量”一词最初由威廉·罗恩·哈密顿在1846年引入。对，就是那个发明四元数的哈密顿：
+ Tensor实际上就是一个多维数组（multidimensional array）
+ Tensor的目的是能够创造更高维度的矩阵、向量。
+  色彩的例子 彩色图像文件（RGB）一般都会处理成3-d tensor，每个2d array中的element表示一个像素，R代表Red，G代表Gr"><meta property="og:site_name" content="Hello Alili"><title>TensorFlow中的Tensor是什么? | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title><link rel="shortcut icon" href="https://alili.tech/images/favicon.ico"><link rel="manifest" href="/manifest.json"><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"><link href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/css/justifiedGallery.min.css" rel="stylesheet"><link rel="preload" href="https://alili.tech/css/style.css" as="style"><link rel="stylesheet" href="https://alili.tech/css/style.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script>document.addEventListener("error", function (e) {
+			  var elem = e.target;
+			  if (elem.tagName.toLowerCase() == 'img') {
+				elem.style.display='none'
+			  }
+			}, true);</script></head><body><div id="header-post"><a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a> <span id="menu"><span id="nav"><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></span><br><span id="actions"><ul><li><a class="icon" href="https://alili.tech/archive/xewn7qbng4a/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li><li><a class="icon" href="https://alili.tech/archive/wrcvtewpsi/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li><li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li><li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li></ul><span id="i-prev" class="info" style="display:none;">Previous post</span> <span id="i-next" class="info" style="display:none;">Next post</span> <span id="i-top" class="info" style="display:none;">Back to top</span> <span id="i-share" class="info" style="display:none;">Share post</span></span><br><div id="share" style="display: none"><ul><li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&text=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-weibo" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f"><i class="fa fa-facebook" aria-hidden="true"></i></a></li><li><a class="icon" href="https://twitter.com/share?url=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&text=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&title=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&is_video=false&description=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li><li><a class="icon" href="mailto:?subject=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f&body=Check out this article: https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f"><i class="fa fa-envelope" aria-hidden="true"></i></a></li><li><a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&title=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li><li><a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&title=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-reddit" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&title=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li><li><a class="icon" href="http://digg.com/submit?url=https%3a%2f%2falili.tech%2farchive%2feujpibnlnp8%2f&title=TensorFlow%e4%b8%ad%e7%9a%84Tensor%e6%98%af%e4%bb%80%e4%b9%88%3f"><i class="fa fa-digg" aria-hidden="true"></i></a></li></ul></div><div id="toc"><nav id="TableOfContents"><ul><li><ul><li><a href="#tensor-张量">Tensor(张量)</a><ul><li><a href="#色彩的例子">色彩的例子</a></li></ul></li><li><a href="#多维数组">多维数组</a></li><li><a href="#初始化一个向量">初始化一个向量</a><ul><li><a href="#0维">0维</a></li><li><a href="#1维">1维</a></li><li><a href="#2维">2维</a></li><li><a href="#3维">3维</a></li><li><a href="#4维">4维</a></li><li><a href="#5维">5维</a></li><li><a href="#6维">6维</a></li></ul></li></ul></li></ul></nav></div></span></div><div class="content index width mx-auto px3 my3"><section id="wrapper" class="home"><article class="post" itemscope itemtype="http://schema.org/BlogPosting"><header><h1 class="posttitle" itemprop="name headline">TensorFlow中的Tensor是什么?</h1><div class="meta"><div class="postdate"><time datetime="2020-09-18" itemprop="datePublished">2020-09-18</time></div><div class="article-tag"><i class="fa fa-eye"></i> <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span></span></div><div class="article-tag"><i class="fa fa-tag"></i> <a href="/tags/daily">Daily</a> <a href="/tags/%E6%95%B0%E5%AD%A6">数学</a> <a href="/tags/ai">AI</a></div><div class="article-tag-box"></div></div></header><div class="content" itemprop="articleBody"><h2 id="tensor-张量">Tensor(张量)</h2><p>“张量”一词最初由威廉·罗恩·哈密顿在1846年引入。对，就是那个发明四元数的哈密顿：</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/643fca018187d79da1be1bc50f3beb7544c7ff56ffd50d0b4d332952034daa1b.png" alt="图 3"></p><ul><li><p>Tensor实际上就是一个多维数组（multidimensional array）</p></li><li><p>Tensor的目的是能够创造更高维度的矩阵、向量。</p></li></ul><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/61f12309aef252eb15cb7e168026f7bab180ea4a8cca2726d0ae4454c6003ba6.png" alt="图 1"></p><h3 id="色彩的例子">色彩的例子</h3><p>彩色图像文件（RGB）一般都会处理成3-d tensor，每个2d array中的element表示一个像素，R代表Red，G代表Green，B代表Blue</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/9d8d1f97a751a320d7ba127a3722691950609d6e21edc6fc1e983923d72096c8.png" alt="图 2"></p><h2 id="多维数组">多维数组</h2><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/6e86be5b727b21425ed87b5d2971b5f6ea9fa38cfe56455931faacd288085206.png" alt="图 4"></p><p>把三维张量画成一个立方体：</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/0a29499dadc3caf5094316c2a6570a54489f552f36989a67590a2e717b654278.png" alt="图 5"></p><p>更高维的张量:</p><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/f0cd642725a7b5b30592837c1fe8ec518816a170e57f74e577f1dfbcfaf6bb06.png" alt="图 6"></p><h2 id="初始化一个向量">初始化一个向量</h2><h3 id="0维">0维</h3><pre><code class="language-js">tf.tensor(1).print();
+</code></pre><h3 id="1维">1维</h3><pre><code class="language-js">tf.tensor([1, 2, 3, 4]).print();
+// or
+tf.tensor1d([1, 2, 3]).print();
+</code></pre><h3 id="2维">2维</h3><pre><code class="language-js">tf.tensor([[1, 2], [3, 4]]).print();
+// or
+tf.tensor2d([[1, 2], [3, 4]]).print();
+</code></pre><h3 id="3维">3维</h3><pre><code class="language-js">tf.tensor([[[1], [2]], [[3], [4]]]).print();
+// or
+tf.tensor3d([[[1], [2]], [[3], [4]]]).print();
+</code></pre><h3 id="4维">4维</h3><pre><code class="language-js">tf.tensor([[[[1], [2]], [[3], [4]]]]).print();
+// or
+tf.tensor4d([[[[1], [2]], [[3], [4]]]]).print();
+</code></pre><h3 id="5维">5维</h3><pre><code class="language-js">tf.tensor([[[[[1], [2]], [[3], [4]]]]]).print();
+// or
+tf.tensor5d([[[[[1], [2]], [[3], [4]]]]]).print();
+</code></pre><h3 id="6维">6维</h3><pre><code class="language-js">tf.tensor([[[[[[1],[2]],[[3],[4]]],[[[5],[6]],[[7],[8]]]]]]).print();
+// or
+tf.tensor6d([[[[[[1],[2]],[[3],[4]]],[[[5],[6]],[[7],[8]]]]]]).print();
+</code></pre><h2>微信公众号</h2><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/c2a91cfb597826a4b02b755746c300e00cc7728a9f5bac20bec538e8c76a443f.png"><h2>本文链接：</h2><a href="https://alili.tech/archive/eujpibnlnp8/" target="_blank">https://alili.tech/archive/eujpibnlnp8/</a></div></article><script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><div class="blog-post-comments"></div><script>new Valine({
+        el: '.blog-post-comments', 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', 
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', 
+        placeholder: '说点什么? 证明你来过~', 
+        avatar:'robohash',
+        notify:true,
+        verify:true
+    });</script><h1># 最新文章</h1><ul id="more-post-list" class="archive readmore"><li><a href="/archive/wrcvtewpsi/">我的博客即将同步至腾讯云&#43;社区<aside class="dates">2020-09-24</aside></a></li><li><a href="/archive/xewn7qbng4a/">Mac系统开启Chrome 跟 Edge的网页强制暗黑模式<aside class="dates">2020-09-17</aside></a></li><li><a href="/archive/leqgfwbuko/">Mac系统如何关掉Chrome的跨域限制<aside class="dates">2020-09-16</aside></a></li><li><a href="/archive/97enyq3a3m/">数学篇 - 数据结构丶编程语句丶基础算法与数学的关系(笔记)<aside class="dates">2020-09-15</aside></a></li><li><a href="/archive/6iwpimvelxh/">数学篇 - 朴素贝叶斯(Naive Bayes)分类算法(笔记)<aside class="dates">2020-09-14</aside></a></li><li><a href="/archive/haz1cu03hf/">数学篇 - 概率之联合概率、条件概率、边缘概率和贝叶斯法则(笔记)<aside class="dates">2020-09-13</aside></a></li><li><a href="/archive/6mchh1x7mrv/">数学篇 - 概率之随机变量与分布(笔记)<aside class="dates">2020-09-12</aside></a></li><li><a href="/archive/5g1oligl91/">数学篇 - 树的深度优先搜索与广度优先搜索(笔记)<aside class="dates">2020-09-11</aside></a></li><li><a href="/archive/rakfaq9whbo/">数学篇 - 树的概念(笔记)<aside class="dates">2020-09-10</aside></a></li><li><a href="/archive/nfo3tlig7y/">数学篇 - 动态规划,编辑距离的计算(笔记)<aside class="dates">2020-09-09</aside></a></li></ul></section></div><footer id="footer"><div class="footer-left">Copyright © 2020 Fan <a href="https://beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号</a></div><div class="footer-right"><nav><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></nav></div></footer><script src="https://alili.tech/lib/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/js/jquery.justifiedGallery.min.js"></script><script src="https://alili.tech/js/main.js"></script><script>(function(){
+  if(location.host!=='alili.tech')return;
+  var ga = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=UA-129382678-1';       
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(ga, s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129382678-1');
+})()</script><script>(function(){
+    if(location.host!=='alili.tech')return;
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>if ('serviceWorker' in navigator) {
+    if(location.host!=='alili.tech')return;
+      window.addEventListener('load', () => {
+          navigator.serviceWorker
+              .register('/sw.js')
+              .then(registration => {
+                  
+              })
+              .catch(registrationError => {
+                  console.log('SW registration failed: ', registrationError);
+              });
+      });
+  }</script><script>var _mtac = {};
+  (function() {
+    if(location.host!=='alili.tech')return;
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500643908");
+    mta.setAttribute("cid", "500649335");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+  })();</script></body></html>
