@@ -6,10 +6,25 @@
     <description>Recent content in 数学 on Hello Alili</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://alili.tech/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TensorFlow中的Tensor是什么?</title>
+      <link>https://alili.tech/archive/97enyq3a3m/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/97enyq3a3m/</guid>
+      <description>Tensor(张量) “张量”一词最初由威廉·罗恩·哈密顿在1846年引入。对，就是那个发明四元数的哈密顿：
+ Tensor实际上就是一个多维数组（multidimensional array）
+ Tensor的目的是能够创造更高维度的矩阵、向量。
+  色彩的例子 彩色图像文件（RGB）一般都会处理成3-d tensor，每个2d array中的element表示一个像素，R代表Red，G代表Green，B代表Blue
+多维数组 把三维张量画成一个立方体：
+更高维的张量:
+初始化一个向量 0维 tf.tensor(1).print();  1维 tf.tensor([1, 2, 3, 4]).print(); // or tf.tensor1d([1, 2, 3]).print();  2维 tf.tensor([[1, 2], [3, 4]]).print(); // or tf.tensor2d([[1, 2], [3, 4]]).print();  3维 tf.tensor([[[1], [2]], [[3], [4]]]).print(); // or tf.tensor3d([[[1], [2]], [[3], [4]]]).print();  4维 tf.tensor([[[[1], [2]], [[3], [4]]]]).print(); // or tf.tensor4d([[[[1], [2]], [[3], [4]]]]).print();  5维 tf.tensor([[[[[1], [2]], [[3], [4]]]]]).</description>
+    </item>
     
     <item>
       <title>数学篇 - 数据结构丶编程语句丶基础算法与数学的关系(笔记)</title>

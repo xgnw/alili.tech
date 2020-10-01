@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://alili.tech/archive/97enyq3a3m/</loc>
+    <lastmod>2020-09-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://alili.tech/archive/xewn7qbng4a/</loc>
     <lastmod>2020-09-17T22:30:05+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -52195,6 +52202,13 @@
   </url>
   
   <url>
+    <loc>https://alili.tech/links/</loc>
+    <lastmod>2016-05-27T14:31:51+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://alili.tech/about/_resume/</loc>
     <lastmod>2016-05-27T14:31:51+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -52335,6 +52349,13 @@
   </url>
   
   <url>
+    <loc>https://alili.tech/tags/ai/</loc>
+    <lastmod>2020-09-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://alili.tech/tags/angular/</loc>
     <lastmod>2018-12-27T22:17:36+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -52377,7 +52398,7 @@
   
   <url>
     <loc>https://alili.tech/tags/daily/</loc>
-    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-09-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -52559,7 +52580,7 @@
   
   <url>
     <loc>https://alili.tech/tags/</loc>
-    <lastmod>2018-12-27T22:17:36+00:00</lastmod>
+    <lastmod>2020-09-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -52657,7 +52678,7 @@
   
   <url>
     <loc>https://alili.tech/tags/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-09-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
