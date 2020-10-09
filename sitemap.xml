@@ -3,13 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://alili.tech/archive/wrcvtewpsi/</loc>
-    <lastmod>2020-09-24T00:04:05+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://alili.tech/archive/eujpibnlnp8/</loc>
     <lastmod>2020-09-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -51873,6 +51866,20 @@
   </url>
   
   <url>
+    <loc>https://alili.tech/archive/08adaj66t3u6/</loc>
+    <lastmod>2017-09-24T00:04:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://alili.tech/archive/wrcvtewpsi/</loc>
+    <lastmod>2017-09-24T00:04:05+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://alili.tech/archive/638cc3cd/</loc>
     <lastmod>2017-09-10T19:33:33+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -52371,7 +52378,7 @@
   
   <url>
     <loc>https://alili.tech/archive/</loc>
-    <lastmod>2020-09-24T00:04:05+00:00</lastmod>
+    <lastmod>2020-09-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -52440,7 +52447,7 @@
   
   <url>
     <loc>https://alili.tech/</loc>
-    <lastmod>2020-09-24T00:04:05+00:00</lastmod>
+    <lastmod>2020-09-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
