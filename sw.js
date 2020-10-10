@@ -96,7 +96,7 @@ self.__precacheManifest = [
   },
   {
     "url": "oss.js",
-    "revision": "7b1b536904a816d9f21124e4741e3446"
+    "revision": "17b7a2e2c82a9db11b4e7b39cbd5796f"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
