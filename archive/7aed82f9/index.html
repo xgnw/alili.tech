@@ -46,7 +46,8 @@ this.props.children  可是这样渲染出来的组件,父组件如何传递prop
       }
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(bp, s);
-  })();</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>if ('serviceWorker' in navigator) {
+  })();</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>(function(){
+  if ('serviceWorker' in navigator) {
     if(location.host!=='alili.tech')return;
       window.addEventListener('load', () => {
           navigator.serviceWorker
@@ -58,7 +59,8 @@ this.props.children  可是这样渲染出来的组件,父组件如何传递prop
                   console.log('SW registration failed: ', registrationError);
               });
       });
-  }</script><script>var _mtac = {};
+  }
+})()</script><script>var _mtac = {};
   (function() {
     if(location.host!=='alili.tech')return;
     var mta = document.createElement("script");
