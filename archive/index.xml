@@ -6,10 +6,32 @@
     <description>Recent content in Archives on Hello Alili</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Dec 2020 22:17:36 +0000</lastBuildDate>
     
 	<atom:link href="https://alili.tech/archive/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Taro开发的快应用如何优化体积</title>
+      <link>https://alili.tech/archive/n1j1l1fvzbb/</link>
+      <pubDate>Tue, 15 Dec 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/n1j1l1fvzbb/</guid>
+      <description>快应用重复打包问题 使用Taro开发快应用,有一个问题绝对不能忽视,那就是体积问题.
+因为快应用打包的特性(1080以下)多个页面里,如果重复应用了一个第三方库,那么这个库的代码会一起打到这个页面中,导致一样的代码会存在多个页面中.
+因为目前1080版本的快应用没有全面铺开.如果你贸然升级自己快应用的最低平台版本号为1080. 你将会失去大量低版本的用户.
+官方给出的解决方案 (1080以下版本) 当然快应用官方也意识到了这个问题,给出了最早期的解决方案.
+那就是将多个页面会依赖到的代码,全部在快应用初始化的时候挂载到全局变量上面.
+其他页面使用的时候,直接引用全局变量就可以了.
+// 入口文件 import day from &#39;day&#39;; const globalRef = Object.getPrototypeOf(global) || global; globalRef.day = day;  // 页面使用 const globalRef = Object.getPrototypeOf(global) || global const day = globalRef.day day()  分析项目使用了哪些公共代码 重复打包的内容,npm依赖会占大头,也有可能是自己写的公共代码.
+我们的项目用到了哪些npm依赖? Taro打包之后,dist/quickapp 下的构建产物会单独把所有项目能用到的npm包放到 src/npm/ 目录下.
+公共代码分析 只要一个js被多个page引用,就必须会造成重复打包的问题.
+使用Taro的 alias 特性解决重复打包的问题 alias 是应用路径别名的特性,他的实现原理很简单,在config文件中制定好路径替换规则.
+在taro打包的时候,直接替换应用路径成为正确的应用路径就可以了.
+{ &#39;@src&#39;: &#39;src&#39;, &#39;@plugin&#39;: &#39;src/plugin&#39;, &#39;@components&#39;: &#39;src/components&#39;, }  如何使用alias解决我们的打包问题 既然 alias有替换应用路径的问题,再加上我们的第三方库只要挂载到全局变量中就可以让所有页面都可以使用到.
+两个特性结合起来的解决方案就是这样的.
+第一步,修改npm的alias 为什么要这样做,看到第二步你就会明白.</description>
+    </item>
     
     <item>
       <title>TensorFlow中的Tensor是什么?</title>
