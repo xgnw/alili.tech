@@ -6,10 +6,23 @@
     <description>Recent content in Archives on Hello Alili</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 16 Dec 2020 22:17:36 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Dec 2020 22:17:36 +0000</lastBuildDate>
     
 	<atom:link href="https://alili.tech/archive/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>算法复杂度分析</title>
+      <link>https://alili.tech/archive/p0xtbakhqjq/</link>
+      <pubDate>Sat, 19 Dec 2020 22:17:36 +0000</pubDate>
+      
+      <guid>https://alili.tech/archive/p0xtbakhqjq/</guid>
+      <description>一切都是为了统计代码执行的效率
+事后统计法 通过统计、监控，就能得到算法执行的时间和占用的内存大小
+大 O 复杂度表示法 随着数据规模的增长，算法的执行时间和空间占用，按照多项式的比例增长
+时间复杂度的好坏排序 O(1)（常数阶）&amp;lt; O(logn)（对数阶）&amp;lt; O(n)（线性阶）&amp;lt; O(nlogn)（线性对数阶）&amp;lt; O(n^2)（平方阶）&amp;lt; O(n^3)（立方阶）&amp;lt; O(2^n)（指数阶）&amp;lt; O(n!)（阶乘阶）
+常数阶O(1) int i = 8; int j = 6; int sum = i + j;  线性阶O(n) for(i=1; i&amp;lt;=n; ++i) { j = i; j++; }  对数阶 O(logn) i=1; while (i &amp;lt;= n) { i = i * 2; }  线性对数阶O(nlogN) for(m=1; m&amp;lt;n; m++) { i = 1; while(i&amp;lt;n) { i = i * 2; } }  O(m+n)、O(m*n) int cal(int m, int n) { int sum_1 = 0; int i = 1; for (; i &amp;lt; m; ++i) { sum_1 = sum_1 + i; } int sum_2 = 0; int j = 1; for (; j &amp;lt; n; ++j) { sum_2 = sum_2 + j; } return sum_1 + sum_2; }  平方阶O(n²) for(x=1; i&amp;lt;=n; x++) { for(i=1; i&amp;lt;=n; i++) { j = i; j++; } }  最好最坏复杂度  最好情况时间复杂度就是，在最理想的情况下，执行这段代码的时间复杂度</description>
+    </item>
     
     <item>
       <title>使用Taro开发各端的顺序建议</title>

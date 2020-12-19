@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="zh"><head><meta name="generator" content="Hugo 0.51"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="HandheldFriendly" content="True"><meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name="wap-font-scale" content="no"><meta name="360-site-verification" content="0903ba33c82867d1f7bd8831e32a7e34"><meta name="sogou_site_verification" content="E8uWFBcf4a"><meta name="author" content="Fan"><meta name="description" itemprop="description" content="一切都是为了统计代码执行的效率
+事后统计法 通过统计、监控，就能得到算法执行的时间和占用的内存大小
+大 O 复杂度表示法 随着数据规模的增长，算法的执行时间和空间占用，按照多项式的比例增长
+时间复杂度的好坏排序 O(1)（常数阶）&amp;lt; O(logn)（对数阶）&amp;lt; O(n)（线性阶）&amp;lt; O(nlogn)（线性对数阶）&amp;lt; O(n^2)（平方阶）&amp;lt; O(n^3)（立方阶）&amp;l"><meta name="keywords" content="算法, 数据结构"><meta property="og:locale" content="en_US"><meta property="og:title" content="算法复杂度分析"><meta property="og:image" content="https://alili.tech/images/logo.png"><meta property="og:description" content="一切都是为了统计代码执行的效率
+事后统计法 通过统计、监控，就能得到算法执行的时间和占用的内存大小
+大 O 复杂度表示法 随着数据规模的增长，算法的执行时间和空间占用，按照多项式的比例增长
+时间复杂度的好坏排序 O(1)（常数阶）&amp;lt; O(logn)（对数阶）&amp;lt; O(n)（线性阶）&amp;lt; O(nlogn)（线性对数阶）&amp;lt; O(n^2)（平方阶）&amp;lt; O(n^3)（立方阶）&amp;l"><meta property="og:site_name" content="Hello Alili"><title>算法复杂度分析 | 前端大爆炸! - WEB BANG! BANG!! BANG!!!</title><link rel="shortcut icon" href="https://alili.tech/images/favicon.ico"><link rel="manifest" href="/manifest.json"><link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"><link href="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/css/justifiedGallery.min.css" rel="stylesheet"><link rel="preload" href="https://alili.tech/css/style.css" as="style"><link rel="stylesheet" href="https://alili.tech/css/style.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script>document.addEventListener("error", function (e) {
+			  var elem = e.target;
+			  if (elem.tagName.toLowerCase() == 'img') {
+				elem.style.display='none'
+			  }
+			}, true);</script></head><body><div id="header-post"><a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a> <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a> <span id="menu"><span id="nav"><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></span><br><span id="actions"><ul><li><a class="icon" href="https://alili.tech/archive/hm5dl5tsw3k/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li><li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li><li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li></ul><span id="i-prev" class="info" style="display:none;">Previous post</span> <span id="i-next" class="info" style="display:none;">Next post</span> <span id="i-top" class="info" style="display:none;">Back to top</span> <span id="i-share" class="info" style="display:none;">Share post</span></span><br><div id="share" style="display: none"><ul><li><a class="icon" href="http://v.t.sina.com.cn/share/share.php?u=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&text=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-weibo" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f"><i class="fa fa-facebook" aria-hidden="true"></i></a></li><li><a class="icon" href="https://twitter.com/share?url=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&text=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&title=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&is_video=false&description=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li><li><a class="icon" href="mailto:?subject=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90&body=Check out this article: https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f"><i class="fa fa-envelope" aria-hidden="true"></i></a></li><li><a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&title=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li><li><a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&title=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-reddit" aria-hidden="true"></i></a></li><li><a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&title=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li><li><a class="icon" href="http://digg.com/submit?url=https%3a%2f%2falili.tech%2farchive%2fp0xtbakhqjq%2f&title=%e7%ae%97%e6%b3%95%e5%a4%8d%e6%9d%82%e5%ba%a6%e5%88%86%e6%9e%90"><i class="fa fa-digg" aria-hidden="true"></i></a></li></ul></div><div id="toc"><nav id="TableOfContents"><ul><li><ul><li><a href="#事后统计法">事后统计法</a></li><li><a href="#大-o-复杂度表示法">大 O 复杂度表示法</a><ul><li><a href="#时间复杂度的好坏排序">时间复杂度的好坏排序</a></li><li><a href="#常数阶o-1">常数阶O(1)</a></li><li><a href="#线性阶o-n">线性阶O(n)</a></li><li><a href="#对数阶-o-logn">对数阶 O(logn)</a></li><li><a href="#线性对数阶o-nlogn">线性对数阶O(nlogN)</a></li><li><a href="#o-m-n-o-m-n">O(m+n)、O(m*n)</a></li><li><a href="#平方阶o-n²">平方阶O(n²)</a></li></ul></li><li><a href="#最好最坏复杂度">最好最坏复杂度</a></li><li><a href="#空间复杂度">空间复杂度</a><ul><li><a href="#空间复杂度-o-1">空间复杂度 O(1)</a></li><li><a href="#空间复杂度-o-n">空间复杂度 O(n)</a></li></ul></li></ul></li></ul></nav></div></span></div><div class="content index width mx-auto px3 my3"><section id="wrapper" class="home"><article class="post" itemscope itemtype="http://schema.org/BlogPosting"><header><h1 class="posttitle" itemprop="name headline">算法复杂度分析</h1><div class="meta"><div class="postdate"><time datetime="2020-12-19" itemprop="datePublished">2020-12-19</time></div><div class="article-tag"><i class="fa fa-eye"></i> <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span></span></div><div class="article-tag"><i class="fa fa-tag"></i> <a href="/tags/%E7%AE%97%E6%B3%95">算法</a></div><div class="article-tag-box"></div></div></header><div class="content" itemprop="articleBody"><p>一切都是为了统计代码执行的效率</p><h2 id="事后统计法">事后统计法</h2><p>通过统计、监控，就能得到算法执行的时间和占用的内存大小</p><h2 id="大-o-复杂度表示法">大 O 复杂度表示法</h2><p>随着数据规模的增长，算法的执行时间和空间占用，按照多项式的比例增长</p><h3 id="时间复杂度的好坏排序">时间复杂度的好坏排序</h3><p><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/35125f99fc7c79d019449ecdf8ef04434feaef35ccc580fd22326dffe1e58ca6.png" alt="图 1"></p><p>O(1)（常数阶）&lt; O(logn)（对数阶）&lt; O(n)（线性阶）&lt; O(nlogn)（线性对数阶）&lt; O(n^2)（平方阶）&lt; O(n^3)（立方阶）&lt; O(2^n)（指数阶）&lt; O(n!)（阶乘阶）</p><h3 id="常数阶o-1">常数阶O(1)</h3><pre><code class="language-java"> int i = 8;
+ int j = 6;
+ int sum = i + j;
+</code></pre><h3 id="线性阶o-n">线性阶O(n)</h3><pre><code class="language-java">for(i=1; i&lt;=n; ++i)
+{
+   j = i;
+   j++;
+}
+</code></pre><h3 id="对数阶-o-logn">对数阶 O(logn)</h3><pre><code class="language-java"> i=1;
+ while (i &lt;= n)  {
+   i = i * 2;
+ }
+</code></pre><h3 id="线性对数阶o-nlogn">线性对数阶O(nlogN)</h3><pre><code class="language-java">for(m=1; m&lt;n; m++)
+{
+    i = 1;
+    while(i&lt;n)
+    {
+        i = i * 2;
+    }
+}
+</code></pre><h3 id="o-m-n-o-m-n">O(m+n)、O(m*n)</h3><pre><code class="language-java">
+int cal(int m, int n) {
+  int sum_1 = 0;
+  int i = 1;
+  for (; i &lt; m; ++i) {
+    sum_1 = sum_1 + i;
+  }
+
+  int sum_2 = 0;
+  int j = 1;
+  for (; j &lt; n; ++j) {
+    sum_2 = sum_2 + j;
+  }
+
+  return sum_1 + sum_2;
+}
+
+</code></pre><h3 id="平方阶o-n²">平方阶O(n²)</h3><pre><code class="language-java">for(x=1; i&lt;=n; x++)
+{
+   for(i=1; i&lt;=n; i++)
+    {
+       j = i;
+       j++;
+    }
+}
+</code></pre><h2 id="最好最坏复杂度">最好最坏复杂度</h2><ul><li><p>最好情况时间复杂度就是，在最理想的情况下，执行这段代码的时间复杂度</p></li><li><p>最坏情况时间复杂度就是，在最糟糕的情况下，执行这段代码的时间复杂度。</p></li></ul><h2 id="空间复杂度">空间复杂度</h2><p>渐进空间复杂度（asymptotic space complexity），表示算法的存储空间与数据规模之间的增长关系</p><h3 id="空间复杂度-o-1">空间复杂度 O(1)</h3><pre><code class="language-java">int i = 1;
+int j = 2;
+++i;
+j++;
+int m = i + j;
+</code></pre><h3 id="空间复杂度-o-n">空间复杂度 O(n)</h3><pre><code class="language-java">int[] m = new int[n]
+for(i=1; i&lt;=n; ++i)
+{
+   j = i;
+   j++;
+}
+</code></pre><h2>微信公众号</h2><img src="https://incomparable9527.coding.net/p/imageBed/d/imageBed/git/raw/master/c2a91cfb597826a4b02b755746c300e00cc7728a9f5bac20bec538e8c76a443f.png"><h2>本文链接：</h2><a href="https://alili.tech/archive/p0xtbakhqjq/" target="_blank">https://alili.tech/archive/p0xtbakhqjq/</a></div></article><script src="https://cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><div class="blog-post-comments"></div><script>new Valine({
+        el: '.blog-post-comments', 
+        app_id: 'ItyOVb4I33bTwprf3cY6uqMc-gzGzoHsz', 
+        app_key: 'hLhtmd4tT0qJbyO2SgQ8odya', 
+        placeholder: '说点什么? 证明你来过~', 
+        avatar:'robohash',
+        notify:true,
+        verify:true
+    });</script><h1># 最新文章</h1><ul id="more-post-list" class="archive readmore"><li><a href="/archive/hm5dl5tsw3k/">使用Taro开发各端的顺序建议<aside class="dates">2020-12-16</aside></a></li><li><a href="/archive/n1j1l1fvzbb/">使用Taro开发的快应用如何优化体积<aside class="dates">2020-12-15</aside></a></li><li><a href="/archive/eujpibnlnp8/">TensorFlow中的Tensor是什么?<aside class="dates">2020-09-18</aside></a></li><li><a href="/archive/xewn7qbng4a/">Mac系统开启Chrome 跟 Edge的网页强制暗黑模式<aside class="dates">2020-09-17</aside></a></li><li><a href="/archive/leqgfwbuko/">Mac系统如何关掉Chrome的跨域限制<aside class="dates">2020-09-16</aside></a></li><li><a href="/archive/97enyq3a3m/">数学篇 - 数据结构丶编程语句丶基础算法与数学的关系(笔记)<aside class="dates">2020-09-15</aside></a></li><li><a href="/archive/6iwpimvelxh/">数学篇 - 朴素贝叶斯(Naive Bayes)分类算法(笔记)<aside class="dates">2020-09-14</aside></a></li><li><a href="/archive/haz1cu03hf/">数学篇 - 概率之联合概率、条件概率、边缘概率和贝叶斯法则(笔记)<aside class="dates">2020-09-13</aside></a></li><li><a href="/archive/6mchh1x7mrv/">数学篇 - 概率之随机变量与分布(笔记)<aside class="dates">2020-09-12</aside></a></li><li><a href="/archive/5g1oligl91/">数学篇 - 树的深度优先搜索与广度优先搜索(笔记)<aside class="dates">2020-09-11</aside></a></li></ul></section></div><footer id="footer"><div class="footer-left">Copyright © 2020 Fan <a href="https://beian.miit.gov.cn" rel="external nofollow noopener noreferrer" target="_blank">浙ICP备18045521号</a></div><div class="footer-right"><nav><ul><li><a href="/">Home</a></li><li><a href="/archive/">Archives</a></li><li><a href="/about/">About</a></li><li><a href="http://github.com/Fantasy9527" target="_blank">Github</a></li></ul></nav></div></footer><script src="https://alili.tech/lib/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.6.1/js/jquery.justifiedGallery.min.js"></script><script src="https://alili.tech/js/main.js"></script><script>(function(){
+  if(location.host!=='alili.tech')return;
+  var ga = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=UA-129382678-1';       
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(ga, s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129382678-1');
+})()</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>(function(){
+  if ('serviceWorker' in navigator) {
+    if(location.host!=='alili.tech')return;
+      window.addEventListener('load', () => {
+          navigator.serviceWorker
+              .register('/sw.js')
+              .then(registration => {
+                  
+              })
+              .catch(registrationError => {
+                  console.log('SW registration failed: ', registrationError);
+              });
+      });
+  }
+})()</script><script>var _mtac = {};
+  (function() {
+    if(location.host!=='alili.tech')return;
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500643908");
+    mta.setAttribute("cid", "500649335");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+  })();</script><script>(function(){
+    if(location.host!=='alili.tech')return;
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();</script></body></html>
