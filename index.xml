@@ -2683,7 +2683,7 @@ require.config({ paths: { &#39;angular&#39;: &#39;http://cdn.</description>
       <pubDate>Fri, 27 May 2016 14:31:51 +0000</pubDate>
       
       <guid>https://alili.tech/about/_resume/</guid>
-      <description>个人信息  杨帆/男/1992 7年前端开发经验 3年团队管理经验 技术博客：https://alili.tech Github：https://github.com/Fantasy9527 Email：incomparable9527@foxmail.com  工作经历 国铁吉讯 （2019年2月 ~ 现在） 2020年3月 ~ 现在  任职轻应用团队负责人.主要负责跨端开发的技术攻坚与支撑跨端业务功能开发.
+      <description>个人信息  杨帆/男/1992 3年团队管理经验 / 7年前端开发经验 技术博客：https://alili.tech 电话：15658001769 Email：incomparable9527@foxmail.com  工作经历 国铁吉讯 （2019年2月 ~ 现在） 2020年3月 ~ 现在  任职轻应用团队负责人.主要负责跨端开发的技术攻坚与多端业务支撑.
   下属: 6人
 主要成果: 完善Taro框架支撑各个业务在8个端(微信小程序,百度小程序,快应用,React Native,H5,QQ小程序,鸿蒙,车端小场景)的服务触达.
  完成基于Taro开发的React Native的热更新设计与落地
